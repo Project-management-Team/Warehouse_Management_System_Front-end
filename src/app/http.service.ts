@@ -1,0 +1,16 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from './user';
+
+@Injectable()
+export class HttpService{
+
+  constructor(private http: HttpClient){ }
+
+  // tslint:disable-next-line:typedef
+  postData(user: User){
+
+    const body = {name: user.name, age: user.age};
+    return this.http.post('http://localhost:3000/postuser', body);
+  }
+}
