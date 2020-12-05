@@ -24,6 +24,8 @@ import { WarehouseComponent } from './shelf-detection/warehouse/warehouse.compon
 import { ReadyElementComponent } from './shelf-detection/ready-element/ready-element.component';
 import { WaitElementComponent } from './shelf-detection/wait-element/wait-element.component';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { EmptyElementComponent } from './shelf-detection/empty-element/empty-element.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import {MatTreeModule} from '@angular/material/tree';
     WarehouseComponent,
     ReadyElementComponent,
     WaitElementComponent,
+    EmptyElementComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import {MatTreeModule} from '@angular/material/tree';
     MatInputModule,
     MatDividerModule,
     MatChipsModule,
-    MatTreeModule
+    MatTreeModule,
+    MatGridListModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

@@ -4,3 +4,7 @@
 .myContent{
   display: inline-flex;
 }
+
+mat-grid-list{
+  background-color: darkgrey;
+}
