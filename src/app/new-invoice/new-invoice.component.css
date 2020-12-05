@@ -1,0 +1,21 @@
+.myBody{
+  background-color: darkgrey;
+}
+
+.form-field {
+  margin: 8px 8px 8px 0;
+  width: 200px;
+}
+
+.button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.row {
+  display: inline-flex;
+}

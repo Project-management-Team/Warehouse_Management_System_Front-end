@@ -11,11 +11,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import { NewInvoiceComponent } from './new-invoice/new-invoice.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { ElementsComponent } from './new-invoice/elements/elements.component';
+import { NewElementComponent } from './new-invoice/new-element/new-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    NewInvoiceComponent,
+    ElementsComponent,
+    NewElementComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,8 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatDividerModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

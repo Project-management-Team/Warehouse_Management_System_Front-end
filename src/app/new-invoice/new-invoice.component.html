@@ -1,0 +1,38 @@
+<div class="myBody">
+    <mat-form-field class="form-field">
+    <mat-label>InvoiceNo</mat-label>
+    <input matInput type="text" [(ngModel)]="invoiceValue">
+    <button mat-button *ngIf="invoiceValue" matSuffix mat-icon-button aria-label="Clear" (click)="invoiceValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <mat-label>Qty</mat-label>
+    <input matInput type="text" [(ngModel)]="qtyValue">
+    <button mat-button *ngIf="qtyValue" matSuffix mat-icon-button aria-label="Clear" (click)="qtyValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <section>
+    <div class="row">
+      <app-elements></app-elements>
+      <app-new-element></app-new-element>
+      <app-new-element></app-new-element>
+      <app-new-element></app-new-element>
+    </div>
+    <div class="row">
+      <app-new-element></app-new-element>
+      <app-new-element></app-new-element>
+      <app-new-element></app-new-element>
+      <app-new-element></app-new-element>
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+  <section>
+    <div class="button-row">
+      <button mat-raised-button>Restart</button>
+      <button mat-raised-button>Send</button>
+    </div>
+  </section>
+</div>
