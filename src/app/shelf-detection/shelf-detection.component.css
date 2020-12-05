@@ -1,3 +1,6 @@
 .myBody {
   background-color: darkgrey;
 }
+.myContent{
+  display: inline-flex;
+}

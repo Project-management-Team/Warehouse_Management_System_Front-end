@@ -23,6 +23,7 @@ import { ShelfDetectionComponent } from './shelf-detection/shelf-detection.compo
 import { WarehouseComponent } from './shelf-detection/warehouse/warehouse.component';
 import { ReadyElementComponent } from './shelf-detection/ready-element/ready-element.component';
 import { WaitElementComponent } from './shelf-detection/wait-element/wait-element.component';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { WaitElementComponent } from './shelf-detection/wait-element/wait-elemen
     MatIconModule,
     MatInputModule,
     MatDividerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTreeModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
