@@ -19,6 +19,10 @@ import { ReportComponent } from './report/report.component';
 import { FilterComponent } from './report/filter/filter.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { DocumentComponent } from './report/document/document.component';
+import { ShelfDetectionComponent } from './shelf-detection/shelf-detection.component';
+import { WarehouseComponent } from './shelf-detection/warehouse/warehouse.component';
+import { ReadyElementComponent } from './shelf-detection/ready-element/ready-element.component';
+import { WaitElementComponent } from './shelf-detection/wait-element/wait-element.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { DocumentComponent } from './report/document/document.component';
     ReportComponent,
     FilterComponent,
     DocumentComponent,
+    ShelfDetectionComponent,
+    WarehouseComponent,
+    ReadyElementComponent,
+    WaitElementComponent,
   ],
   imports: [
     BrowserModule,

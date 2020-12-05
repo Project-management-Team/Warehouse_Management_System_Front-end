@@ -1,0 +1,43 @@
+<div class="myBody">
+  <h1>Shelf 1</h1>
+  <app-warehouse></app-warehouse>
+  <mat-divider></mat-divider>
+  <mat-form-field class="form-field">
+    <mat-label>Shelf Name</mat-label>
+    <input matInput type="text" [(ngModel)]="shelfNameValue">
+    <button mat-button *ngIf="shelfNameValue" matSuffix mat-icon-button aria-label="Clear" (click)="shelfNameValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field class="form-field">
+    <mat-label>Zone</mat-label>
+    <input matInput type="text" [(ngModel)]="zoneValue">
+    <button mat-button *ngIf="zoneValue" matSuffix mat-icon-button aria-label="Clear" (click)="zoneValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field class="form-field">
+    <mat-label>Size</mat-label>
+    <input matInput type="text" [(ngModel)]="sizeValue">
+    <button mat-button *ngIf="sizeValue" matSuffix mat-icon-button aria-label="Clear" (click)="sizeValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <section>
+    <div class="row">
+
+    </div>
+    <div class="row">
+
+    </div>
+  </section>
+  <mat-divider></mat-divider>
+  <section>
+    <div class="button-row">
+      <button mat-raised-button>Save</button>
+    </div>
+  </section>
+</div>
