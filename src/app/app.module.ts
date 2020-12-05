@@ -15,6 +15,10 @@ import { NewInvoiceComponent } from './new-invoice/new-invoice.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { ElementsComponent } from './new-invoice/elements/elements.component';
 import { NewElementComponent } from './new-invoice/new-element/new-element.component';
+import { ReportComponent } from './report/report.component';
+import { FilterComponent } from './report/filter/filter.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { DocumentComponent } from './report/document/document.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,9 @@ import { NewElementComponent } from './new-invoice/new-element/new-element.compo
     NewInvoiceComponent,
     ElementsComponent,
     NewElementComponent,
+    ReportComponent,
+    FilterComponent,
+    DocumentComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,8 @@ import { NewElementComponent } from './new-invoice/new-element/new-element.compo
     ReactiveFormsModule,
     MatIconModule,
     MatInputModule,
-    MatDividerModule
+    MatDividerModule,
+    MatChipsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
