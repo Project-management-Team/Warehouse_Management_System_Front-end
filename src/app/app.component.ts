@@ -16,6 +16,9 @@ export class AppComponent {
   receivedUser: User; // полученный пользователь
   done = false;
   homeFlag = false;
+  shelfFlag = true;
+  invoiceFlag = false;
+  reportFlag = false;
 
   constructor(private httpService: HttpService) {
   }
@@ -40,5 +43,23 @@ export class AppComponent {
 
   exit(): void {
     this.homeFlag = !this.homeFlag;
+  }
+
+  shelfActive(): void {
+    this.invoiceFlag = false;
+    this.reportFlag = false;
+    this.shelfFlag = true;
+  }
+
+  invoiceActive(): void {
+    this.shelfFlag = false;
+    this.reportFlag = false;
+    this.invoiceFlag = true;
+  }
+
+  reportActive(): void {
+    this.shelfFlag = false;
+    this.invoiceFlag = false;
+    this.reportFlag = true;
   }
 }

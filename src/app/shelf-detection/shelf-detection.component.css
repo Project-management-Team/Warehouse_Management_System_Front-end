@@ -1,10 +1,9 @@
-.myBody {
-  background-color: darkgrey;
-}
-.myContent{
-  display: inline-flex;
+.container {
+  width: 90vw;
+  height: 90vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-mat-grid-list{
-  background-color: darkgrey;
+.row {
+  display: inline-flex;
 }

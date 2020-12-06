@@ -1,42 +1,34 @@
-<mat-grid-list cols="2" rowHeight="3:1">
-  <mat-grid-tile>
-    <h1>Shelf 1</h1>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    2
-  </mat-grid-tile>
-  <mat-grid-tile>
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened>
     <app-warehouse></app-warehouse>
-  </mat-grid-tile>
-  <mat-grid-tile>
+  </mat-drawer>
+  <mat-drawer-content>
+    <h1 style="margin: 10px">Shelf 1</h1>
     <mat-divider></mat-divider>
-    <mat-form-field class="form-field">
-      <mat-label>Shelf Name</mat-label>
-      <input matInput type="text" [(ngModel)]="shelfNameValue">
-      <button mat-button *ngIf="shelfNameValue" matSuffix mat-icon-button aria-label="Clear" (click)="shelfNameValue=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <mat-divider></mat-divider>
-    <mat-form-field class="form-field">
-      <mat-label>Zone</mat-label>
-      <input matInput type="text" [(ngModel)]="zoneValue">
-      <button mat-button *ngIf="zoneValue" matSuffix mat-icon-button aria-label="Clear" (click)="zoneValue=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <mat-divider></mat-divider>
-    <mat-form-field class="form-field">
-      <mat-label>Size</mat-label>
-      <input matInput type="text" [(ngModel)]="sizeValue">
-      <button mat-button *ngIf="sizeValue" matSuffix mat-icon-button aria-label="Clear" (click)="sizeValue=''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <mat-divider></mat-divider>
-  </mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-  <mat-grid-tile>
+        <mat-form-field class="form-field" style="margin-left: 10px; width: 60vw">
+          <mat-label>Shelf Name</mat-label>
+          <input matInput type="text" [(ngModel)]="shelfNameValue">
+          <button mat-button *ngIf="shelfNameValue" matSuffix mat-icon-button aria-label="Clear" (click)="shelfNameValue=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field class="form-field" style="margin-left: 10px; width: 60vw">
+          <mat-label>Zone</mat-label>
+          <input matInput type="text" [(ngModel)]="zoneValue">
+          <button mat-button *ngIf="zoneValue" matSuffix mat-icon-button aria-label="Clear" (click)="zoneValue=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field class="form-field" style="margin-left: 10px; width: 60vw">
+          <mat-label>Size</mat-label>
+          <input matInput type="text" [(ngModel)]="sizeValue">
+          <button mat-button *ngIf="sizeValue" matSuffix mat-icon-button aria-label="Clear" (click)="sizeValue=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-divider></mat-divider>
     <section>
       <div class="row">
         <app-ready-element></app-ready-element>
@@ -49,18 +41,76 @@
         <app-empty-element></app-empty-element>
       </div>
     </section>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    6
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <section style="position: absolute;right: 0px;">
+    <section style="position: absolute; right: 10px; bottom: 10px">
       <div class="button-row">
         <button mat-raised-button>Save</button>
       </div>
     </section>
-  </mat-grid-tile>
-</mat-grid-list>
+  </mat-drawer-content>
+</mat-drawer-container>
+<!--<mat-grid-list cols="2" rowHeight="3:1" style="background-color: black">-->
+<!--  <mat-grid-tile>-->
+<!--    <h1>Shelf 1</h1>-->
+<!--  </mat-grid-tile>-->
+<!--  <mat-grid-tile>-->
+<!--    2-->
+<!--  </mat-grid-tile>-->
+<!--  <mat-grid-tile>-->
+<!--    <app-warehouse></app-warehouse>-->
+<!--  </mat-grid-tile>-->
+<!--  <mat-grid-tile>-->
+<!--    <mat-divider></mat-divider>-->
+<!--    <mat-form-field class="form-field">-->
+<!--      <mat-label>Shelf Name</mat-label>-->
+<!--      <input matInput type="text" [(ngModel)]="shelfNameValue">-->
+<!--      <button mat-button *ngIf="shelfNameValue" matSuffix mat-icon-button aria-label="Clear" (click)="shelfNameValue=''">-->
+<!--        <mat-icon>close</mat-icon>-->
+<!--      </button>-->
+<!--    </mat-form-field>-->
+<!--    <mat-divider></mat-divider>-->
+<!--    <mat-form-field class="form-field">-->
+<!--      <mat-label>Zone</mat-label>-->
+<!--      <input matInput type="text" [(ngModel)]="zoneValue">-->
+<!--      <button mat-button *ngIf="zoneValue" matSuffix mat-icon-button aria-label="Clear" (click)="zoneValue=''">-->
+<!--        <mat-icon>close</mat-icon>-->
+<!--      </button>-->
+<!--    </mat-form-field>-->
+<!--    <mat-divider></mat-divider>-->
+<!--    <mat-form-field class="form-field">-->
+<!--      <mat-label>Size</mat-label>-->
+<!--      <input matInput type="text" [(ngModel)]="sizeValue">-->
+<!--      <button mat-button *ngIf="sizeValue" matSuffix mat-icon-button aria-label="Clear" (click)="sizeValue=''">-->
+<!--        <mat-icon>close</mat-icon>-->
+<!--      </button>-->
+<!--    </mat-form-field>-->
+<!--    <mat-divider></mat-divider>-->
+<!--  </mat-grid-tile>-->
+<!--  <mat-grid-tile>4</mat-grid-tile>-->
+<!--  <mat-grid-tile>-->
+<!--    <section>-->
+<!--      <div class="row">-->
+<!--        <app-ready-element></app-ready-element>-->
+<!--        <app-wait-element></app-wait-element>-->
+<!--        <app-empty-element></app-empty-element>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <app-empty-element></app-empty-element>-->
+<!--        <app-empty-element></app-empty-element>-->
+<!--        <app-empty-element></app-empty-element>-->
+<!--      </div>-->
+<!--    </section>-->
+<!--  </mat-grid-tile>-->
+<!--  <mat-grid-tile>-->
+<!--    6-->
+<!--  </mat-grid-tile>-->
+<!--  <mat-grid-tile>-->
+<!--    <section style="position: absolute;right: 0px;">-->
+<!--      <div class="button-row">-->
+<!--        <button mat-raised-button>Save</button>-->
+<!--      </div>-->
+<!--    </section>-->
+<!--  </mat-grid-tile>-->
+<!--</mat-grid-list>-->
 
 <!--<div class="myBody">-->
 <!--  <h1>Shelf 1</h1>-->

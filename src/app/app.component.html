@@ -23,7 +23,7 @@
 
 <!--<app-shelf-detection></app-shelf-detection>-->
 
-<mat-grid-list *ngIf="!homeFlag" cols="10" rowHeight="1.83:1">
+<mat-grid-list *ngIf="homeFlag" cols="10" rowHeight="1.83:1">
   <mat-grid-tile colspan="10" rowspan="1">
     <mat-toolbar style="width: 100%; height: 100%">
       <span>Logo</span>
@@ -36,7 +36,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-grid-list *ngIf="homeFlag" cols="10" rowHeight="1.83:1">
+<mat-grid-list *ngIf="!homeFlag" cols="10" rowHeight="1.83:1">
   <mat-grid-tile colspan="10" rowspan="1">
     <mat-toolbar style="width: 100%; height: 100%">
       <span>Logo</span>
@@ -47,13 +47,13 @@
   <mat-grid-tile colspan="1" rowspan="9">
     <mat-drawer-container class="container" autosize>
       <mat-drawer class="sidenav" mode="side" opened>
-        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon">
+        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a home icon" (click)="shelfActive()">
           <mat-icon>home</mat-icon>
         </button>
-        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon">
+        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a local_shipping icon" (click)="invoiceActive()">
           <mat-icon>local_shipping</mat-icon>
         </button>
-        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon">
+        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a description icon" (click)="reportActive()">
           <mat-icon>description</mat-icon>
         </button>
         <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon" (click)="exit()">
@@ -64,12 +64,9 @@
     </mat-drawer-container>
   </mat-grid-tile>
   <mat-grid-tile colspan="9" rowspan="9">
-<!--    <app-new-invoice"></app-new-invoice>-->
-
-    <!--<app-report></app-report>-->
-
-    <!--<app-shelf-detection></app-shelf-detection>-->
-    <h3>Text</h3>
+    <app-shelf-detection *ngIf="shelfFlag"></app-shelf-detection>
+    <app-new-invoice *ngIf="invoiceFlag"></app-new-invoice>
+    <app-report *ngIf="reportFlag"></app-report>
   </mat-grid-tile>
 </mat-grid-list>
 
