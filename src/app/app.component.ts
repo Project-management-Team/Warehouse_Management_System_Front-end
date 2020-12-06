@@ -9,11 +9,13 @@ import {User} from './user';
   providers: [HttpService]
 })
 export class AppComponent {
+  date = new Date();
+  currentTime = this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
   title = 'WMS';
   user: User = new User(); // данные вводимого пользователя
-
   receivedUser: User; // полученный пользователь
   done = false;
+  homeFlag = false;
 
   constructor(private httpService: HttpService) {
   }
@@ -28,5 +30,15 @@ export class AppComponent {
         },
         error => console.log(error)
       );
+  }
+
+  receiveMessage($event): void {
+    if ($event === 'admin') {
+      this.homeFlag = !this.homeFlag;
+    }
+  }
+
+  exit(): void {
+    this.homeFlag = !this.homeFlag;
   }
 }

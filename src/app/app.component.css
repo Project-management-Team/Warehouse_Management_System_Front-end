@@ -1,3 +1,36 @@
 body{
   background-color: darkgrey;
 }
+mat-grid-tile {
+  background: darkgrey;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spacerVertical {
+  display: inline-block;
+  margin-top: 30vw;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  padding: 20px;
+}
+
+.myBtns {
+  margin: 5px;
+}

@@ -16,6 +16,61 @@
 <!--</div>-->
 
 <!--<app-authorization></app-authorization>-->
+
 <!--<app-new-invoice></app-new-invoice>-->
+
 <!--<app-report></app-report>-->
-<app-shelf-detection></app-shelf-detection>
+
+<!--<app-shelf-detection></app-shelf-detection>-->
+
+<mat-grid-list *ngIf="!homeFlag" cols="10" rowHeight="1.83:1">
+  <mat-grid-tile colspan="10" rowspan="1">
+    <mat-toolbar style="width: 100%; height: 100%">
+      <span>Logo</span>
+      <span class="spacer"></span>
+      {{currentTime}}
+    </mat-toolbar>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="10" rowspan="9">
+    <app-authorization (messageEvent)="receiveMessage($event)"></app-authorization>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list *ngIf="homeFlag" cols="10" rowHeight="1.83:1">
+  <mat-grid-tile colspan="10" rowspan="1">
+    <mat-toolbar style="width: 100%; height: 100%">
+      <span>Logo</span>
+      <span class="spacer"></span>
+      {{currentTime}}
+    </mat-toolbar>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="9">
+    <mat-drawer-container class="container" autosize>
+      <mat-drawer class="sidenav" mode="side" opened>
+        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon">
+          <mat-icon>home</mat-icon>
+        </button>
+        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon">
+          <mat-icon>local_shipping</mat-icon>
+        </button>
+        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon">
+          <mat-icon>description</mat-icon>
+        </button>
+        <button mat-fab color="primary" class="myBtns" aria-label="Example icon button with a delete icon" (click)="exit()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+        <span class="spacerVertical"></span>
+      </mat-drawer>
+    </mat-drawer-container>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="9" rowspan="9">
+<!--    <app-new-invoice"></app-new-invoice>-->
+
+    <!--<app-report></app-report>-->
+
+    <!--<app-shelf-detection></app-shelf-detection>-->
+    <h3>Text</h3>
+  </mat-grid-tile>
+</mat-grid-list>
+
+

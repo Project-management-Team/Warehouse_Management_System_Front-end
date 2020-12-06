@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {User} from '../user';
 import {HttpService} from '../http.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-authorization',
@@ -12,9 +13,12 @@ export class AuthorizationComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   hide = true;
+  @Output() messageEvent = new EventEmitter<string>();
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.password = new FormControl('', [Validators.required]);
   }
 
   // tslint:disable-next-line:typedef
@@ -38,4 +42,15 @@ export class AuthorizationComponent implements OnInit {
       );
   }
 
+  sendData(email: FormControl, password: FormControl): void {
+    if (email.value === 'admin@admin.com' && password.value === 'admin') {
+      this.messageEvent.emit('admin');
+    }
+  }
+
+  flushData(): void {
+    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.password = new FormControl('', [Validators.required]);
+  }
 }
+

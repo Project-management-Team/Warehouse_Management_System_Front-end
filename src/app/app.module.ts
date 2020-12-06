@@ -26,6 +26,8 @@ import { WaitElementComponent } from './shelf-detection/wait-element/wait-elemen
 import {MatTreeModule} from '@angular/material/tree';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { EmptyElementComponent } from './shelf-detection/empty-element/empty-element.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { EmptyElementComponent } from './shelf-detection/empty-element/empty-ele
     MatDividerModule,
     MatChipsModule,
     MatTreeModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
