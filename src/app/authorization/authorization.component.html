@@ -1,0 +1,26 @@
+<mat-card class="card">
+  <mat-card-content>
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" style=" margin: auto;
+  width: 34%;
+  padding: 10px;">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Enter</button>
+    <button mat-button>Cancel</button>
+  </mat-card-actions>
+</mat-card>
