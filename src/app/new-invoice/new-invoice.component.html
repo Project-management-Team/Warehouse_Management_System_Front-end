@@ -1,18 +1,21 @@
-<div class="myBody">
+<section style="width: 90vw; height: 90vh">
+  <h1 style="margin: 10px">New Invoice</h1>
+  <section style="text-align: center">
     <mat-form-field class="form-field">
-    <mat-label>InvoiceNo</mat-label>
-    <input matInput type="text" [(ngModel)]="invoiceValue">
-    <button mat-button *ngIf="invoiceValue" matSuffix mat-icon-button aria-label="Clear" (click)="invoiceValue=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-  <mat-form-field class="form-field">
-    <mat-label>Qty</mat-label>
-    <input matInput type="text" [(ngModel)]="qtyValue">
-    <button mat-button *ngIf="qtyValue" matSuffix mat-icon-button aria-label="Clear" (click)="qtyValue=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+      <mat-label>Invoice No</mat-label>
+      <input matInput type="text" [(ngModel)]="invoiceValue">
+      <button mat-button *ngIf="invoiceValue" matSuffix mat-icon-button aria-label="Clear" (click)="invoiceValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field><br>
+    <mat-form-field class="form-field">
+      <mat-label>Qty</mat-label>
+      <input matInput type="text" [(ngModel)]="qtyValue">
+      <button mat-button *ngIf="qtyValue" matSuffix mat-icon-button aria-label="Clear" (click)="qtyValue=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </section>
   <mat-divider></mat-divider>
   <section>
     <div class="row">
@@ -29,10 +32,10 @@
     </div>
   </section>
   <mat-divider></mat-divider>
-  <section>
-    <div class="button-row">
-      <button mat-raised-button>Restart</button>
-      <button mat-raised-button>Send</button>
-    </div>
-  </section>
-</div>
+  <section style="position: absolute; right: 10px; bottom: 10px">
+  <div class="button-row">
+    <button mat-raised-button>Restart</button>
+    <button mat-raised-button>Send</button>
+  </div>
+</section>
+</section>
