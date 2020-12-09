@@ -62,4 +62,8 @@ export class AppComponent {
     this.invoiceFlag = false;
     this.reportFlag = true;
   }
+
+  openAdminPanel(): void {
+
+  }
 }
