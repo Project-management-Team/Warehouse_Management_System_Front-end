@@ -28,6 +28,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { EmptyElementComponent } from './shelf-detection/empty-element/empty-element.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatTreeModule,
     MatGridListModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSnackBarModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

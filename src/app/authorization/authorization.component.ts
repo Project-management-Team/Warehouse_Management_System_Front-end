@@ -3,6 +3,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {User} from '../user';
 import {HttpService} from '../http.service';
 import { EventEmitter } from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-authorization',
@@ -14,7 +15,8 @@ export class AuthorizationComponent implements OnInit {
   password = new FormControl('', [Validators.required]);
   hide = true;
   @Output() messageEvent = new EventEmitter<string>();
-  constructor(private httpService: HttpService) { }
+  // tslint:disable-next-line:variable-name
+  constructor(private httpService: HttpService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.email = new FormControl('', [Validators.required, Validators.email]);
@@ -44,6 +46,7 @@ export class AuthorizationComponent implements OnInit {
 
   sendData(email: FormControl, password: FormControl): void {
     if (email.value === 'admin@admin.com' && password.value === 'admin') {
+      this.openSnackBar('Welcome!');
       this.messageEvent.emit('admin');
     }
   }
@@ -51,6 +54,12 @@ export class AuthorizationComponent implements OnInit {
   flushData(): void {
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.password = new FormControl('', [Validators.required]);
+  }
+
+  openSnackBar(message: string): void {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 }
 
