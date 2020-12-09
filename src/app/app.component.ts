@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {HttpService} from './http.service';
 import {User} from './user';
+import {MatDialog} from '@angular/material/dialog';
+import {AdminPopComponent} from './admin-pop/admin-pop.component';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +21,10 @@ export class AppComponent {
   shelfFlag = true;
   invoiceFlag = false;
   reportFlag = false;
+  animal: string;
+  name: string;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, public dialog: MatDialog) {
   }
 
   // tslint:disable-next-line:typedef
@@ -64,6 +68,15 @@ export class AppComponent {
   }
 
   openAdminPanel(): void {
+    const dialogRef = this.dialog.open(AdminPopComponent, {
+      width: '50vw',
+      height: '50vh',
+      data: {name: this.name, animal: this.animal}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 }

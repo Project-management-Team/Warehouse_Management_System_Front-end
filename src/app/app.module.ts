@@ -29,6 +29,9 @@ import { EmptyElementComponent } from './shelf-detection/empty-element/empty-ele
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AdminPopComponent } from './admin-pop/admin-pop.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReadyElementComponent,
     WaitElementComponent,
     EmptyElementComponent,
+    AdminPopComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatGridListModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatListModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
