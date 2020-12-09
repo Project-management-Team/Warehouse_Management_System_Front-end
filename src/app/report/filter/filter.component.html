@@ -1,18 +1,8 @@
-<mat-form-field class="chip-list">
-  <mat-chip-list #chipList aria-label="Fruit selection">
-    <mat-chip *ngFor="let element of elements" [selectable]="selectable"
-              [removable]="removable" (removed)="remove(element)">
-      {{element.name}}
-      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-    </mat-chip>
-    <input placeholder="New element..."
-           [matChipInputFor]="chipList"
-           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-           [matChipInputAddOnBlur]="addOnBlur"
-           (matChipInputTokenEnd)="add($event)">
-  </mat-chip-list>
-</mat-form-field>
-<section style="position: absolute; right: 15px;">
-  <button mat-raised-button style="margin-right: 10px">Export</button>
-  <button mat-raised-button>Find</button>
-</section>
+<form class="form">
+  <mat-form-field class="full-width">
+    <mat-label>Categories</mat-label>
+    <input matInput #message maxlength="256" placeholder="Ex. qty=222">
+    <mat-hint align="start"><strong>Don`t exceed the maximum size</strong> </mat-hint>
+    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+  </mat-form-field>
+</form>
