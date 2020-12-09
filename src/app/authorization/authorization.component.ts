@@ -46,10 +46,12 @@ export class AuthorizationComponent implements OnInit {
 
   sendData(email: FormControl, password: FormControl): void {
     if (email.value === 'admin@admin.com' && password.value === 'admin') {
-      this.openSnackBar('Welcome!');
+      this.openSnackBar('Welcome!', 'OK');
       this.messageEvent.emit('admin');
     }
-    this.openSnackBar('Wrong Login or Password!');
+    else {
+      this.openSnackBar('Wrong Login or Password!', 'Cancel');
+    }
   }
 
   flushData(): void {
@@ -57,8 +59,8 @@ export class AuthorizationComponent implements OnInit {
     this.password = new FormControl('', [Validators.required]);
   }
 
-  openSnackBar(message: string): void {
-    this._snackBar.open(message, '', {
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
       duration: 2000,
     });
   }

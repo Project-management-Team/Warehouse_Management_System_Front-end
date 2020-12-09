@@ -1,6 +1,7 @@
 body{
   background-color: darkgrey;
 }
+
 mat-grid-tile {
   background: darkgrey;
 }
@@ -11,7 +12,7 @@ mat-grid-tile {
 
 .spacerVertical {
   display: inline-block;
-  margin-top: 30vw;
+  margin-top: 25vw;
 }
 
 .container {
