@@ -49,6 +49,7 @@ export class AuthorizationComponent implements OnInit {
       this.openSnackBar('Welcome!');
       this.messageEvent.emit('admin');
     }
+    this.openSnackBar('Wrong Login or Password!');
   }
 
   flushData(): void {
