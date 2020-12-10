@@ -1,6 +1,13 @@
 <div class="myTree">
-  <h3 style="margin: 10px">Warehouse</h3>
-  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Choose your Warehouse</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let el of warehouses" [value]="el.value" (click)="hello(el.viewValue)">
+        {{el.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree" *ngIf="treeFlag">
     <!-- This is the tree node template for leaf nodes -->
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
       <li class="mat-tree-node">
@@ -28,7 +35,7 @@
     </mat-nested-tree-node>
   </mat-tree>
 
-  <div class="button-row">
+  <div class="button-row" *ngIf="treeFlag">
     <div class="flex-container">
       <div class="button-container">
         <button mat-fab color="primary" aria-label="Example icon button with a delete icon">

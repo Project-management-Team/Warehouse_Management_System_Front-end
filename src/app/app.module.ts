@@ -33,6 +33,8 @@ import { AdminPopComponent } from './admin-pop/admin-pop.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
 import { ActivityInfoComponent } from './activity-info/activity-info.component';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { ActivityInfoComponent } from './activity-info/activity-info.component';
     MatSidenavModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 
+interface Warehouse {
+  value: string;
+  viewValue: string;
+}
+
 interface ZoneNode {
   name: string;
   children?: ZoneNode[];
@@ -36,7 +41,12 @@ export class WarehouseComponent implements OnInit {
 
   treeControl = new NestedTreeControl<ZoneNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<ZoneNode>();
-
+  warehouses: Warehouse[] = [
+    {value: 'warehouse-0', viewValue: 'Warehouse 1'},
+    {value: 'warehouse-1', viewValue: 'Warehouse 2'},
+    {value: 'warehouse-2', viewValue: 'Warehouse 3'}
+  ];
+  treeFlag = false;
   constructor() {
     this.dataSource.data = TREE_DATA;
   }
@@ -46,4 +56,7 @@ export class WarehouseComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hello(msg): void {
+    console.log(msg);
+  }
 }

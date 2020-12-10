@@ -2,7 +2,7 @@
   <mat-drawer mode="side" opened>
     <app-warehouse></app-warehouse>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content *ngIf="shelfFlag">
     <h1 style="margin: 10px">Shelf 1</h1>
     <mat-divider></mat-divider>
         <mat-form-field class="form-field" style="margin-left: 10px; width: 60vw">

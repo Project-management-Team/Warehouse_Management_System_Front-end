@@ -9,6 +9,7 @@ export class ShelfDetectionComponent implements OnInit {
   shelfNameValue = '';
   zoneValue = '';
   sizeValue = '';
+  shelfFlag = false;
 
   constructor() { }
 
