@@ -12,7 +12,7 @@ import {AdminPopComponent} from './admin-pop/admin-pop.component';
 })
 export class AppComponent {
   date = new Date();
-  currentTime = this.date.getDate() + '/' + this.date.getMonth() + '/' + this.date.getFullYear();
+  currentTime = this.date.getDate() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getFullYear();
   title = 'WMS';
   user: User = new User(); // данные вводимого пользователя
   receivedUser: User; // полученный пользователь
@@ -47,6 +47,7 @@ export class AppComponent {
 
   exit(): void {
     this.homeFlag = !this.homeFlag;
+    location.reload();
   }
 
   shelfActive(): void {

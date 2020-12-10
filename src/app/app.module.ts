@@ -32,6 +32,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AdminPopComponent } from './admin-pop/admin-pop.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatListModule} from '@angular/material/list';
+import { ActivityInfoComponent } from './activity-info/activity-info.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatListModule} from '@angular/material/list';
     WaitElementComponent,
     EmptyElementComponent,
     AdminPopComponent,
+    ActivityInfoComponent,
   ],
   imports: [
     BrowserModule,
