@@ -13,12 +13,12 @@ import {ReportComponent} from '../report/report.component';
 })
 export class ActivityInfoComponent implements OnInit {
   action = '';
-
-  constructor(public dialogRefApp: MatDialogRef<AppComponent>,
-              public dialogRefAdmin: MatDialogRef<AdminPopComponent>,
-              public dialogRefInvoice: MatDialogRef<NewInvoiceComponent>,
-              public dialogRefReport: MatDialogRef<ReportComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  // public dialogRefApp: MatDialogRef<AppComponent>,
+  // public dialogRefAdmin: MatDialogRef<AdminPopComponent>,
+  // public dialogRefInvoice: MatDialogRef<NewInvoiceComponent>,
+  // public dialogRefReport: MatDialogRef<ReportComponent>,
+  // @Inject(MAT_DIALOG_DATA) public data: DialogData
+  constructor() { }
 
   ngOnInit(): void {
   }

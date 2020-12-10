@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportComponent implements OnInit {
 
+  dataFlag = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  receiveMessage($event: string): void {
+    if ($event.valueOf() === 'done') {
+      this.dataFlag = true;
+    }
+  }
 }

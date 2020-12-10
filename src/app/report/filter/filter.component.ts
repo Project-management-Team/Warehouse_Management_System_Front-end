@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {EventEmitter} from '@angular/core';
 
 export interface Element {
   name: string;
@@ -22,6 +23,7 @@ export class FilterComponent implements OnInit {
     {name: 'Element 2'},
     {name: 'Element 3'},
   ];
+  @Output() messageEvent = new EventEmitter<string>();
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -49,4 +51,7 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sendFilter(): void {
+    this.messageEvent.emit('done');
+  }
 }
