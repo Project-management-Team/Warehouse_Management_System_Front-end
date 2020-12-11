@@ -40,4 +40,14 @@ export class HttpService{
     const userInfo = `?login=${user.login}&password=${user.password}`;
     return this.http.post('http://wmsproject.azurewebsites.net/api/User/login' + userInfo, body);
   }
+
+  // tslint:disable-next-line:typedef
+  warehousesGet() {
+    return this.http.get('http://wmsproject.azurewebsites.net/api/Warehouse/warehouses');
+  }
+
+  // tslint:disable-next-line:typedef
+  warehouseTreeGet(whID) {
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/Warehouse/api/Warehouse/tree?whId=${whID}`);
+  }
 }

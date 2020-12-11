@@ -1,9 +1,9 @@
 <div class="myTree">
   <mat-form-field appearance="fill" style="width: 100%">
     <mat-label>Choose your Warehouse</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let el of warehouses" [value]="el.value" (click)="hello(el.viewValue)">
-        {{el.viewValue}}
+    <mat-select [(value)]="currentWareHouse">
+      <mat-option *ngFor="let el of warehouses" [value]="el.name" (click)="getTree(el.name)">
+        {{el.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>

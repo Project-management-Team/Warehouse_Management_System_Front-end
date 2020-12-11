@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
+import {HttpService} from '../../http.service';
+import {ReceivedWarehouse} from '../../data-templates/received-data/ReceivedWarehouse';
+import {ReceivedTree} from '../../data-templates/received-data/ReceivedTree';
 
-interface Warehouse {
-  value: string;
-  viewValue: string;
-}
 
 interface ZoneNode {
   name: string;
@@ -41,22 +40,47 @@ export class WarehouseComponent implements OnInit {
 
   treeControl = new NestedTreeControl<ZoneNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<ZoneNode>();
-  warehouses: Warehouse[] = [
-    {value: 'warehouse-0', viewValue: 'Warehouse 1'},
-    {value: 'warehouse-1', viewValue: 'Warehouse 2'},
-    {value: 'warehouse-2', viewValue: 'Warehouse 3'}
+  warehouses: ReceivedWarehouse[] = [
+    {
+      id: 0,
+      name: '',
+      Address: '',
+      Whzones: [
+        null
+      ]
+    }
   ];
   treeFlag = false;
-  constructor() {
+  currentWareHouse = this.warehouses[0].name;
+  constructor(private httpService: HttpService) {
     this.dataSource.data = TREE_DATA;
   }
 
   hasChild = (_: number, node: ZoneNode) => !!node.children && node.children.length > 0;
 
   ngOnInit(): void {
+    this.httpService.warehousesGet().subscribe(
+      (data: ReceivedWarehouse[]) => {
+        this.warehouses.pop();
+        data.forEach(e => {
+          console.log(e);
+          this.warehouses.push(e);
+        });
+        this.currentWareHouse = this.warehouses[0].name;
+      }, error => console.log(error)
+    );
   }
 
-  hello(msg): void {
+  getTree(msg): void {
     console.log(msg);
+    this.warehouses.forEach(e => {
+      if (e.name === msg) {
+        this.httpService.warehouseTreeGet(e.id).subscribe(
+          (data: ReceivedTree) => {
+
+          }
+        );
+      }
+    });
   }
 }
