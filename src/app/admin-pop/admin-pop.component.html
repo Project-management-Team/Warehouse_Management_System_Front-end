@@ -1,39 +1,37 @@
-<h1 mat-dialog-title>Hi, {{data.name}}</h1>
+<h1 mat-dialog-title>Hi, {{userLogin}}</h1>
 <div mat-dialog-content>
   <p>Put there new user:</p>
-  <mat-form-field>
-    <mat-label>login</mat-label>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>password</mat-label>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
+  <form [formGroup]="loginForm">
+    <mat-form-field>
+      <input #login type="text"
+             matInput
+             placeholder="login"
+             formControlName="stateGroup"
+             required
+             >
+    </mat-form-field>
+  </form>
+  <form [formGroup]="passwordForm">
+    <mat-form-field>
+      <input #password type="text"
+             matInput
+             placeholder="password"
+             formControlName="stateGroup"
+             required
+      >
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add</button>
+  <button mat-button [disabled]="!loginForm.valid || !passwordForm.valid" [mat-dialog-close]="data.animal" cdkFocusInitial (click)="addUser(login, password)">Add</button>
 </div>
 <br>
 <section>
   <h1>List of users</h1>
-  <mat-list>
-    <mat-list-item>user1@mail.com
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>user2@mail.com
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>user3@mail.com
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-list-item>
-  </mat-list>
+  <mat-selection-list #users [multiple]="false">
+    <mat-list-option *ngFor="let user of userList" [value]="user.login">
+      login: {{user.login}} | password: {{user.password}}
+    </mat-list-option>
+  </mat-selection-list>
 </section>

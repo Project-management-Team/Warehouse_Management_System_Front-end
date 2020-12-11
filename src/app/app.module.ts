@@ -35,6 +35,7 @@ import {MatListModule} from '@angular/material/list';
 import { ActivityInfoComponent } from './activity-info/activity-info.component';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {HttpService} from './http.service';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatOptionModule,
     MatSelectModule
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

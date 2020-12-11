@@ -1,9 +1,10 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {User} from '../user';
 import {HttpService} from '../http.service';
 import { EventEmitter } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ReceivedUser} from '../data-templates/received-data/ReceivedUser';
+import {User} from '../data-templates/User';
 
 @Component({
   selector: 'app-authorization',
@@ -17,6 +18,10 @@ export class AuthorizationComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
   // tslint:disable-next-line:variable-name
   constructor(private httpService: HttpService, private _snackBar: MatSnackBar) { }
+  user: User = {
+    login: '',
+    password: ''
+  };
 
   ngOnInit(): void {
     this.email = new FormControl('', [Validators.required, Validators.email]);
@@ -36,22 +41,36 @@ export class AuthorizationComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  submit(user: User) {
-    this.httpService.postData(user)
-      .subscribe(
-        (data: User) => {},
-        error => console.log(error)
-      );
-  }
+  // submit(user: User) {
+  //   this.httpService.postData(user)
+  //     .subscribe(
+  //       (data: User) => {},
+  //       error => console.log(error)
+  //     );
+  // }
 
   sendData(email: FormControl, password: FormControl): void {
-    if (email.value === 'admin@admin.com' && password.value === 'admin') {
-      this.openSnackBar('Welcome!', 'OK');
-      this.messageEvent.emit('admin');
-    }
-    else {
-      this.openSnackBar('Wrong Login or Password!', 'Cancel');
-    }
+    this.user.login = '' + email.value;
+    this.user.password = '' + password.value;
+    this.httpService.userAuthorizationPost(this.user).subscribe(
+      (data: ReceivedUser) => {
+        if (data !== undefined || null) {
+          this.openSnackBar('Welcome!', 'OK');
+          sessionStorage.setItem('user', data.login);
+          this.messageEvent.emit('check');
+        }
+        else {
+            this.openSnackBar('Wrong Login or Password!', 'Cancel');
+        }
+      }
+    );
+    // if (email.value === 'admin@admin.com' && password.value === 'admin') {
+    //   this.openSnackBar('Welcome!', 'OK');
+    //   this.messageEvent.emit('admin');
+    // }
+    // else {
+    //   this.openSnackBar('Wrong Login or Password!', 'Cancel');
+    // }
   }
 
   flushData(): void {
