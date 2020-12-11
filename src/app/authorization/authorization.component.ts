@@ -54,7 +54,7 @@ export class AuthorizationComponent implements OnInit {
     this.user.password = '' + password.value;
     this.httpService.userAuthorizationPost(this.user).subscribe(
       (data: ReceivedUser) => {
-        if (data.login !== undefined || null) {
+        if (data.login !== undefined || null || '') {
           this.openSnackBar('Welcome!', 'OK');
           sessionStorage.setItem('user', data.login);
           this.messageEvent.emit('check');
