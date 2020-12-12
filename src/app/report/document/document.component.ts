@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ReceivedItems} from '../../data-templates/received-data/ReceivedItems';
 
 @Component({
   selector: 'app-document',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentComponent implements OnInit {
 
+  @Input() receivedItems: ReceivedItems[];
   constructor() { }
 
   ngOnInit(): void {

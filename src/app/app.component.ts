@@ -28,7 +28,7 @@ export class AppComponent {
   user: User; // данные вводимого пользователя
   receivedUser: receivedUser; // полученный пользователь
   done = false;
-  homeFlag = false;
+  homeFlag = true;
   shelfFlag = true;
   invoiceFlag = false;
   reportFlag = false;

@@ -7,35 +7,53 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree" *ngIf="treeFlag">
-    <!-- This is the tree node template for leaf nodes -->
-    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-      <li class="mat-tree-node">
-        <!-- use a disabled button to provide padding for tree leaf -->
-        <button mat-icon-button disabled></button>
-        {{node.name}}
-      </li>
-    </mat-tree-node>
-    <!-- This is the tree node template for expandable nodes -->
-    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-      <li>
-        <div class="mat-tree-node">
-          <button mat-icon-button matTreeNodeToggle
-                  [attr.aria-label]="'Toggle ' + node.name">
-            <mat-icon class="mat-icon-rtl-mirror">
-              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-            </mat-icon>
-          </button>
-          {{node.name}}
-        </div>
-        <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
-          <ng-container matTreeNodeOutlet></ng-container>
+<!--  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree" *ngIf="treeFlag">-->
+<!--    &lt;!&ndash; This is the tree node template for leaf nodes &ndash;&gt;-->
+<!--    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>-->
+<!--      <li class="mat-tree-node">-->
+<!--        &lt;!&ndash; use a disabled button to provide padding for tree leaf &ndash;&gt;-->
+<!--        <button mat-icon-button disabled></button>-->
+<!--        {{node.name}}-->
+<!--      </li>-->
+<!--    </mat-tree-node>-->
+<!--    &lt;!&ndash; This is the tree node template for expandable nodes &ndash;&gt;-->
+<!--    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">-->
+<!--      <li>-->
+<!--        <div class="mat-tree-node">-->
+<!--          <button mat-icon-button matTreeNodeToggle-->
+<!--                  [attr.aria-label]="'Toggle ' + node.name">-->
+<!--            <mat-icon class="mat-icon-rtl-mirror">-->
+<!--              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}-->
+<!--            </mat-icon>-->
+<!--          </button>-->
+<!--          {{node.name}}-->
+<!--        </div>-->
+<!--        <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">-->
+<!--          <ng-container matTreeNodeOutlet></ng-container>-->
+<!--        </ul>-->
+<!--      </li>-->
+<!--    </mat-nested-tree-node>-->
+<!--  </mat-tree>-->
+
+  <div class="sect" *ngIf="treeIsReady">
+    <ul *ngFor="let e1 of myTree.whzones">
+      <li>{{e1.name}}
+        <ul *ngFor="let e2 of e1.whlockers">
+          <li>{{e2.name}}</li>
+          <ul *ngFor="let e3 of e2.whcells">
+            <li>{{e3.name}}</li>
+          </ul>
         </ul>
       </li>
-    </mat-nested-tree-node>
-  </mat-tree>
+    </ul>
+  </div>
 
-  <div class="button-row" *ngIf="treeFlag">
+<!--  <mat-selection-list #shoes [multiple]="false">-->
+<!--    <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">-->
+<!--      <p>{{shoe}}</p>-->
+<!--    </mat-list-option>-->
+<!--  </mat-selection-list>-->
+  <div class="button-row">
     <div class="flex-container">
       <div class="button-container">
         <button mat-fab color="primary" aria-label="Example icon button with a delete icon">

@@ -2,6 +2,9 @@ import {Component, OnInit, Output} from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {EventEmitter} from '@angular/core';
+import {HttpService} from '../../http.service';
+import {ReceivedItems} from '../../data-templates/received-data/ReceivedItems';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 export interface Element {
   name: string;
@@ -23,7 +26,13 @@ export class FilterComponent implements OnInit {
     {name: 'Element 2'},
     {name: 'Element 3'},
   ];
-  @Output() messageEvent = new EventEmitter<string>();
+  @Output() messageEvent = new EventEmitter<Array<any>>();
+  filterForm: FormGroup = this._formBuilder.group({
+    stateGroup: '',
+  });
+  // tslint:disable-next-line:variable-name
+  constructor(private httpService: HttpService, private _formBuilder: FormBuilder) {
+  }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -51,7 +60,12 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sendFilter(): void {
-    this.messageEvent.emit('done');
+  sendFilter(message): void {
+    console.log(message.value);
+    this.httpService.warehouseSearchGet(1, message.value).subscribe(
+      (data: ReceivedItems[]) => {
+        console.log(data);
+        this.messageEvent.emit(data);
+      });
   }
 }

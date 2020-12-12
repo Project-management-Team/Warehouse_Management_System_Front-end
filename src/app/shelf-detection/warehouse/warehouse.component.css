@@ -1,3 +1,12 @@
+.tree {
+  overflow: auto;
+  max-height: 24vw;
+}
+.sect {
+  overflow: auto;
+  max-height: 34vw;
+}
+
 .tree-invisible {
   display: none;
 }
@@ -15,8 +24,11 @@ section {
 
 
 .button-row {
+  position: absolute;
+  bottom: 3vw;
+  margin-left: 1vw;
   display: table-cell;
-  width: 490px;
+  width: 17vw;
 }
 
 .button-row .mat-button-base {
@@ -36,6 +48,5 @@ section {
 }
 
 .myTree{
-  max-width: 300px;
-  height: 600px;
+  width: 20vw;
 }

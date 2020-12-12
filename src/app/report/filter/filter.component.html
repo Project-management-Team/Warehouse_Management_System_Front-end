@@ -1,9 +1,15 @@
-<form class="form">
-  <mat-form-field class="full-width">
-    <mat-label>Categories</mat-label>
-    <input matInput #message maxlength="256" placeholder="Ex. qty=222">
-    <mat-hint align="start"><strong>Don`t exceed the maximum size</strong> </mat-hint>
-    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
-  </mat-form-field>
-  <button mat-raised-button (click)="sendFilter()">Find</button>
+<form class="form" [formGroup]="filterForm">
+    <mat-form-field class="full-width">
+      <mat-label>Categories</mat-label>
+      <input #message type="text"
+             matInput
+             maxlength="256"
+             placeholder="Ex.: Щось"
+             formControlName="stateGroup"
+             required
+      >
+      <mat-hint align="start"><strong>Don`t exceed the maximum size</strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+  <button mat-raised-button (click)="sendFilter(message)" [disabled]="filterForm.invalid">Find</button>
 </form>
