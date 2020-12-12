@@ -37,11 +37,11 @@
 
   <div class="sect" *ngIf="treeIsReady">
     <ul *ngFor="let e1 of myTree.whzones">
-      <li>{{e1.name}}
+      <li>Zone: {{e1.name}}
         <ul *ngFor="let e2 of e1.whlockers">
-          <li>{{e2.name}}</li>
+          <li><button mat-button (click)="showShelfInfo(e2)">Shelf: {{e2.name}}</button></li>
           <ul *ngFor="let e3 of e2.whcells">
-            <li>{{e3.name}}</li>
+            <li>ELement: {{e3.name}}</li>
           </ul>
         </ul>
       </li>

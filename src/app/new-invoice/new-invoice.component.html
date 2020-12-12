@@ -3,14 +3,14 @@
   <section style="text-align: center">
     <mat-form-field class="form-field">
       <mat-label>Invoice No</mat-label>
-      <input matInput type="text" [(ngModel)]="invoiceValue">
+      <input matInput type="text" disabled [(ngModel)]="invoiceValue">
       <button mat-button *ngIf="invoiceValue" matSuffix mat-icon-button aria-label="Clear" (click)="invoiceValue=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field><br>
     <mat-form-field class="form-field">
       <mat-label>Qty</mat-label>
-      <input matInput type="text" [(ngModel)]="qtyValue">
+      <input matInput type="text" disabled [(ngModel)]="qtyValue">
       <button mat-button *ngIf="qtyValue" matSuffix mat-icon-button aria-label="Clear" (click)="qtyValue=''">
         <mat-icon>close</mat-icon>
       </button>

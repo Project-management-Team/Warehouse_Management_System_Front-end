@@ -1,58 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {HttpService} from '../../http.service';
 import {ReceivedWarehouse} from '../../data-templates/received-data/ReceivedWarehouse';
 import {ReceivedTree} from '../../data-templates/received-data/ReceivedTree';
+import { EventEmitter } from '@angular/core';
+import {SingleShelf} from '../../data-templates/SingleShelf';
 
 
 interface ZoneNode {
   name: string;
   children?: ZoneNode[];
-}
-
-interface ElementInt {
-  id: number;
-  name: '';
-  whlockerId: number;
-  itemId: number;
-  status: number;
-  row: number;
-  column: number;
-  item: {
-    id: number;
-    serialNumber: '';
-    description: '';
-    status: number;
-    truckCells: [
-      null
-    ];
-    whcells: [
-      null
-    ]
-  };
-}
-
-interface ShelfInt {
-  id: 0;
-  name: '';
-  whzoneId: 0;
-  height: 0;
-  width: 0;
-  row: 0;
-  column: 0;
-  whcells: ElementInt[];
-}
-
-interface ZoneInt {
-  id: 0;
-  name: '';
-  whid: 0;
-  height: 0;
-  width: 0;
-  row: 0;
-  column: 0;
-  whlockers: ShelfInt[];
 }
 
 const TREE_DATA: ZoneNode[] = [
@@ -177,20 +135,10 @@ export class WarehouseComponent implements OnInit {
       }
     ]
   };
-  myCurrentTreeZones: ZoneNode = {
-    name: '',
-    children: []
-  };
-  myCurrentTreeShelfs: ZoneNode = {
-    name: '',
-    children: []
-  };
-  myCurrentTreeElements: ZoneNode = {
-    name: '',
-    children: []
-  };
   treeFlag = true;
   currentWareHouse = this.warehouses[0].name;
+  @Output() messageEvent = new EventEmitter<SingleShelf>();
+
   constructor(private httpService: HttpService) {
     this.dataSource.data = TREE_DATA;
   }
@@ -208,6 +156,15 @@ export class WarehouseComponent implements OnInit {
         this.currentWareHouse = this.warehouses[0].name;
       }, error => console.log(error)
     );
+    if (this.warehouses.length !== 0) {
+      this.httpService.warehouseTreeGet(1).subscribe(
+        (data: ReceivedTree) => {
+          this.myTree = data;
+          sessionStorage.setItem('whID', String(this.myTree.id));
+          this.treeIsReady = true;
+        }
+      );
+    }
   }
 
   getTree(msg): void {
@@ -219,7 +176,7 @@ export class WarehouseComponent implements OnInit {
           (data: ReceivedTree) => {
             this.myTree = data;
             sessionStorage.setItem('whID', String(this.myTree.id));
-            this.treeIsReady = true;
+            // this.treeIsReady = true;
             // this.myTree.whzones.forEach(zone => {
             //   zone.whlockers.forEach(shelf => {
             //     shelf.whcells.forEach(element => {
@@ -246,5 +203,9 @@ export class WarehouseComponent implements OnInit {
     // this.httpService.warehouseTreeGet('http://wmsproject.azurewebsites.net/api/Warehouse/tree?whId=1').subscribe(
     //   (data: ReceivedTree) => {console.log(data); }
     // );
+  }
+
+  showShelfInfo(shelf: SingleShelf): void {
+    this.messageEvent.emit(shelf);
   }
 }
