@@ -59,6 +59,7 @@ export class AuthorizationComponent implements OnInit {
           this.openSnackBar('Welcome!', 'OK');
           sessionStorage.setItem('user', data.login);
           this.messageEvent.emit('check');
+
         }
         else {
             this.openSnackBar('Wrong Login or Password!', 'Cancel');
