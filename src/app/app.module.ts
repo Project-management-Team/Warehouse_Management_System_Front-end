@@ -36,6 +36,8 @@ import { ActivityInfoComponent } from './activity-info/activity-info.component';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {HttpService} from './http.service';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import {HttpService} from './http.service';
     MatDialogModule,
     MatListModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [HttpClient, HttpService],
   bootstrap: [AppComponent]
