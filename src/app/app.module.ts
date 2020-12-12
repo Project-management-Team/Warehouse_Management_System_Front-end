@@ -38,6 +38,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {HttpService} from './http.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import { AddNewElementPopComponent } from './shelf-detection/warehouse/add-new-element-pop/add-new-element-pop.component';
+import { DeleteElementPopComponent } from './shelf-detection/warehouse/delete-element-pop/delete-element-pop.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,8 @@ import {MatTableModule} from '@angular/material/table';
     EmptyElementComponent,
     AdminPopComponent,
     ActivityInfoComponent,
+    AddNewElementPopComponent,
+    DeleteElementPopComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,8 @@ import {MatTableModule} from '@angular/material/table';
     MatOptionModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatStepperModule
   ],
   providers: [HttpClient, HttpService],
   bootstrap: [AppComponent]

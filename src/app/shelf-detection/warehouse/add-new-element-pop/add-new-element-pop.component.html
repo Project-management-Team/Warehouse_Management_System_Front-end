@@ -1,0 +1,72 @@
+<div mat-dialog-content>
+  <mat-horizontal-stepper>
+    <mat-step label="Add Warehouse">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">ADD</button>
+    </mat-step>
+    <mat-step label="Add Zone">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Warehouse</mat-label>
+        <mat-select>
+          <mat-option value="option">WH-1</mat-option>
+          <mat-option value="option">WH-2</mat-option>
+          <mat-option value="option">WH-3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">ADD</button>
+    </mat-step>
+    <mat-step label="Add Shelf">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Zone</mat-label>
+        <mat-select>
+          <mat-option value="option">Z-1</mat-option>
+          <mat-option value="option">Z-2</mat-option>
+          <mat-option value="option">Z-3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">ADD</button>
+    </mat-step>
+    <mat-step label="Add Element">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Shelf</mat-label>
+        <mat-select>
+          <mat-option value="option">S-1</mat-option>
+          <mat-option value="option">S-2</mat-option>
+          <mat-option value="option">S-3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">ADD</button>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>

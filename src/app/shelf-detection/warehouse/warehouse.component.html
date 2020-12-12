@@ -56,12 +56,12 @@
   <div class="button-row">
     <div class="flex-container">
       <div class="button-container">
-        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="removeElement()">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
       <div class="button-container">
-        <button mat-fab color="primary" aria-label="Example icon button with a add icon">
+        <button mat-fab color="primary" aria-label="Example icon button with a add icon" (click)="addNewElement()">
           <mat-icon>add</mat-icon>
         </button>
       </div>

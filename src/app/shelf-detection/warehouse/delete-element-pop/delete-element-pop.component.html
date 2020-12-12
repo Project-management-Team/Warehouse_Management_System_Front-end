@@ -1,0 +1,56 @@
+<div mat-dialog-content>
+  <mat-horizontal-stepper>
+    <mat-step label="Remove Warehouse">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Warehouse</mat-label>
+        <mat-select>
+          <mat-option value="option">W-1</mat-option>
+          <mat-option value="option">W-2</mat-option>
+          <mat-option value="option">W-3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">Remove</button>
+    </mat-step>
+    <mat-step label="Remove Zone">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Zone</mat-label>
+        <mat-select>
+          <mat-option value="option">Z-1</mat-option>
+          <mat-option value="option">Z-2</mat-option>
+          <mat-option value="option">Z-3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">Remove</button>
+    </mat-step>
+    <mat-step label="Remove Shelf">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Shelf</mat-label>
+        <mat-select>
+          <mat-option value="option">S-1</mat-option>
+          <mat-option value="option">S-2</mat-option>
+          <mat-option value="option">S-3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">Remove</button>
+    </mat-step>
+    <mat-step label="Remove Element">
+      <mat-form-field appearance="fill">
+        <mat-label>Select Element</mat-label>
+        <mat-select>
+          <mat-option value="option">E-1</mat-option>
+          <mat-option value="option">E-2</mat-option>
+          <mat-option value="option">E-3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary">Remove</button>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>

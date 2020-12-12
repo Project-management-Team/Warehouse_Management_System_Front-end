@@ -11,7 +11,7 @@ export class ReadyElementComponent implements OnInit {
   @Input() childElement: SingleElement;
   serialNo: string;
   description: string;
-
+  free = true;
   myEl = {
     id: 0,
     name: '',
@@ -54,8 +54,9 @@ export class ReadyElementComponent implements OnInit {
     this.myEl = this.childElement;
     console.log(this.myEl);
     if (this.myEl.item !== null) {
-     this.serialNo = 'Serial No:' + this.myEl.item.serialNumber;
-     this.description = 'Description:' + this.myEl.item.description;
+      this.free = false;
+      this.serialNo = 'Serial No:' + this.myEl.item.serialNumber;
+      this.description = 'Description:' + this.myEl.item.description;
     } else {
       this.serialNo = 'empty';
     }

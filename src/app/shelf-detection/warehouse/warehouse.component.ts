@@ -6,6 +6,9 @@ import {ReceivedWarehouse} from '../../data-templates/received-data/ReceivedWare
 import {ReceivedTree} from '../../data-templates/received-data/ReceivedTree';
 import { EventEmitter } from '@angular/core';
 import {SingleShelf} from '../../data-templates/SingleShelf';
+import {MatDialog} from '@angular/material/dialog';
+import {AddNewElementPopComponent} from './add-new-element-pop/add-new-element-pop.component';
+import {DeleteElementPopComponent} from './delete-element-pop/delete-element-pop.component';
 
 
 interface ZoneNode {
@@ -137,9 +140,11 @@ export class WarehouseComponent implements OnInit {
   };
   treeFlag = true;
   currentWareHouse = this.warehouses[0].name;
+  animal: string;
+  name: string;
   @Output() messageEvent = new EventEmitter<SingleShelf>();
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, public dialog: MatDialog) {
     this.dataSource.data = TREE_DATA;
   }
 
@@ -207,5 +212,31 @@ export class WarehouseComponent implements OnInit {
 
   showShelfInfo(shelf: SingleShelf): void {
     this.messageEvent.emit(shelf);
+  }
+
+  addNewElement(): void {
+    // this.httpService
+    const dialogRef = this.dialog.open(AddNewElementPopComponent, {
+      width: '60vw',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  removeElement(): void {
+    // this.httpService
+    const dialogRef = this.dialog.open(DeleteElementPopComponent, {
+      width: '60vw',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 }

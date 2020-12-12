@@ -10,7 +10,13 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button style="border-radius: 50%;">Move</button>
-    <button mat-button style="border-radius: 50%;">Scrap</button>
+    <div *ngIf="!free">
+      <button mat-button style="border-radius: 50%;">Move</button>
+      <button mat-button style="border-radius: 50%;">Scrap</button>
+    </div>
+    <div *ngIf="free">
+      <button mat-button style="border-radius: 50%;">Add</button>
+      <button mat-button style="border-radius: 50%;">Book</button>
+    </div>
   </mat-card-actions>
 </mat-card>

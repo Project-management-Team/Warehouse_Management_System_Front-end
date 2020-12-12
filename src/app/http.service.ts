@@ -57,4 +57,9 @@ export class HttpService{
     return this.http.get(`http://wmsproject.azurewebsites.net/api/Warehouse/search?whId=${whID}&searchPhrase=${searchstr}`);
     // return this.http.get(url);
   }
+
+  // tslint:disable-next-line:typedef
+  invoiceItemsGet(whID) {
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/Warehouse/items?whId=${whID}`);
+  }
 }

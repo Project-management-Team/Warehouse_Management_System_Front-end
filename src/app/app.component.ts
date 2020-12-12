@@ -27,8 +27,10 @@ export class AppComponent {
   title = 'WMS';
   user: User; // данные вводимого пользователя
   receivedUser: receivedUser; // полученный пользователь
-  done = true;
-  homeFlag = false;
+  // change for authorization
+  done = false;
+  homeFlag = true;
+  //
   shelfFlag = true;
   invoiceFlag = false;
   reportFlag = false;

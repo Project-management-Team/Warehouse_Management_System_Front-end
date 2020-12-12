@@ -16,9 +16,7 @@ export interface Element {
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  visible = true;
   selectable = true;
-  removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   elements: Element[] = [

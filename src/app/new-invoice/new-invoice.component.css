@@ -2,6 +2,11 @@
   margin: 8px 8px 8px 10px;
   width: 70vw;
 }
+/*.container {*/
+/*  width: 90vw;*/
+/*  height: 90vh;*/
+/*  border: 1px solid rgba(0, 0, 0, 0.5);*/
+/*}*/
 
 /*.button-row {*/
 /*  display: table-cell;*/
@@ -14,4 +19,5 @@
 
 .row {
   display: inline-flex;
+  margin: 8px;
 }
