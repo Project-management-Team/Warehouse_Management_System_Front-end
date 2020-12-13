@@ -1,52 +1,56 @@
 <div mat-dialog-content>
   <mat-horizontal-stepper>
-    <mat-step label="Remove Warehouse">
-      <mat-form-field appearance="fill">
-        <mat-label>Select Warehouse</mat-label>
-        <mat-select>
-          <mat-option value="option">W-1</mat-option>
-          <mat-option value="option">W-2</mat-option>
-          <mat-option value="option">W-3</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br>
-      <button mat-flat-button color="primary">Remove</button>
-    </mat-step>
-    <mat-step label="Remove Zone">
+<!--    <mat-step>-->
+<!--      <ng-template matStepLabel>-->
+<!--        <p (click)="getWH()">Remove Warehouse</p>-->
+<!--      </ng-template>-->
+<!--      <mat-form-field appearance="fill">-->
+<!--        <mat-label>Select Warehouse</mat-label>-->
+<!--        <mat-select [(value)]="selected">-->
+<!--          <mat-option value="option" *ngFor="let el of myWH">{{el.name}}</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--      <br>-->
+<!--      <button mat-flat-button color="primary" (click)="removeWH(selected)">Remove</button>-->
+<!--    </mat-step>-->
+    <mat-step>
+      <ng-template matStepLabel>
+        <p (click)="getZone()">Remove Zone</p>
+      </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Select Zone</mat-label>
-        <mat-select>
-          <mat-option value="option">Z-1</mat-option>
-          <mat-option value="option">Z-2</mat-option>
-          <mat-option value="option">Z-3</mat-option>
+        <mat-select [(value)]="selected">
+          <mat-option value="option" *ngFor="let el of myZone">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">Remove</button>
+      <button mat-flat-button color="primary" (click)="removeZone(selected)">Remove</button>
     </mat-step>
-    <mat-step label="Remove Shelf">
+    <mat-step>
+      <ng-template matStepLabel>
+        <p (click)="getShelf()">Remove Shelf</p>
+      </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Select Shelf</mat-label>
-        <mat-select>
-          <mat-option value="option">S-1</mat-option>
-          <mat-option value="option">S-2</mat-option>
-          <mat-option value="option">S-3</mat-option>
+        <mat-select [(value)]="selected">
+          <mat-option value="option" *ngFor="let el of myShelf">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">Remove</button>
+      <button mat-flat-button color="primary" (click)="removeShelf(selected)">Remove</button>
     </mat-step>
-    <mat-step label="Remove Element">
+    <mat-step>
+      <ng-template matStepLabel>
+        <p (click)="getElement()">Remove Element</p>
+      </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Select Element</mat-label>
-        <mat-select>
-          <mat-option value="option">E-1</mat-option>
-          <mat-option value="option">E-2</mat-option>
-          <mat-option value="option">E-3</mat-option>
+        <mat-select [(value)]="selected">
+          <mat-option value="option" *ngFor="let el of myElement">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">Remove</button>
+      <button mat-flat-button color="primary" (click)="removeElement(selected)">Remove</button>
     </mat-step>
 
   </mat-horizontal-stepper>

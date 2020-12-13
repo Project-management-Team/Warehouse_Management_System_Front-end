@@ -62,4 +62,44 @@ export class HttpService{
   invoiceItemsGet(whID) {
     return this.http.get(`http://wmsproject.azurewebsites.net/api/Warehouse/items?whId=${whID}`);
   }
+
+  // tslint:disable-next-line:typedef
+  warehousesAllGet() {
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/Warehouse/all`);
+  }
+
+  // tslint:disable-next-line:typedef
+  zonesAllGet() {
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/WHZone/all`);
+  }
+
+  // tslint:disable-next-line:typedef
+  shelfsAllGet() {
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/WHLocker/all`);
+  }
+
+  // tslint:disable-next-line:typedef
+  elementsAllGet() {
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/WHCell/all`);
+  }
+
+  // tslint:disable-next-line:typedef
+  putElementPost(cellID, itemID) {
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/WHCell/put-item?cellId=${cellID}&itemId=${itemID}`);
+  }
+
+  // tslint:disable-next-line:typedef
+  removeZoneDelete(zoneID) {
+    return this.http.delete(`http://wmsproject.azurewebsites.net/api/WHZone?zoneId=${zoneID}`);
+  }
+
+  // tslint:disable-next-line:typedef
+  removeShelfsDelete(shelfID) {
+    return this.http.delete(`http://wmsproject.azurewebsites.net/api/WHLocker?lockerId=${shelfID}`);
+  }
+
+  // tslint:disable-next-line:typedef
+  removeElementsDelete(cellID) {
+    return this.http.delete(`http://wmsproject.azurewebsites.net/api/WHCell?cellId=${cellID}`);
+  }
 }

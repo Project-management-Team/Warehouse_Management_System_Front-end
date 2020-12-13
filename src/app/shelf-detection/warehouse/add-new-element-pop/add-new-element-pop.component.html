@@ -13,7 +13,10 @@
       <br>
       <button mat-flat-button color="primary">ADD</button>
     </mat-step>
-    <mat-step label="Add Zone">
+    <mat-step>
+      <ng-template matStepLabel>
+        <p (click)="getWH()">Add Zone</p>
+      </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput>
@@ -22,15 +25,16 @@
       <mat-form-field appearance="fill">
         <mat-label>Select Warehouse</mat-label>
         <mat-select>
-          <mat-option value="option">WH-1</mat-option>
-          <mat-option value="option">WH-2</mat-option>
-          <mat-option value="option">WH-3</mat-option>
+          <mat-option value="option" *ngFor="let el of myWH">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
       <button mat-flat-button color="primary">ADD</button>
     </mat-step>
-    <mat-step label="Add Shelf">
+    <mat-step>
+      <ng-template matStepLabel>
+        <p (click)="getZone()">Add Shelf</p>
+      </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput>
@@ -39,15 +43,16 @@
       <mat-form-field appearance="fill">
         <mat-label>Select Zone</mat-label>
         <mat-select>
-          <mat-option value="option">Z-1</mat-option>
-          <mat-option value="option">Z-2</mat-option>
-          <mat-option value="option">Z-3</mat-option>
+          <mat-option value="option" *ngFor="let el of myZone">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
       <button mat-flat-button color="primary">ADD</button>
     </mat-step>
-    <mat-step label="Add Element">
+    <mat-step>
+      <ng-template matStepLabel>
+        <p (click)="getShelf()">Add Element</p>
+      </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput>
@@ -56,9 +61,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Select Shelf</mat-label>
         <mat-select>
-          <mat-option value="option">S-1</mat-option>
-          <mat-option value="option">S-2</mat-option>
-          <mat-option value="option">S-3</mat-option>
+          <mat-option value="option" *ngFor="let el of myShelf">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
