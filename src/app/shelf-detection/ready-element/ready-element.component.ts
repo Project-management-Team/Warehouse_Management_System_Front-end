@@ -6,7 +6,73 @@ import {MatDialog} from '@angular/material/dialog';
 import {AdminPopComponent} from '../../admin-pop/admin-pop.component';
 import {AddBtnPopComponent} from './add-btn-pop/add-btn-pop.component';
 import {MoveBtnPopComponent} from './move-btn-pop/move-btn-pop.component';
-
+interface ReceivedData {
+  id: number;
+  serialNumber: string;
+  description: string;
+  status: number;
+  truckCells: [
+    {
+      id: number;
+      truckId: number;
+      itemId: number;
+      column: number;
+      row: number;
+      truck: {
+        id: number;
+        number: string;
+        width: number;
+        height: number;
+        truckCells: [
+          null
+        ]
+      }
+    }
+  ];
+  whcells: [
+    {
+      id: number;
+      name: string;
+      whlockerId: number;
+      itemId: number;
+      status: number;
+      row: number;
+      column: number;
+      whlocker: {
+        id: number;
+        name: string;
+        whzoneId: number;
+        height: number;
+        width: number;
+        row: number;
+        column: number;
+        whzone: {
+          id: number;
+          name: string;
+          whid: number;
+          height: number;
+          width: number;
+          row: number;
+          column: number;
+          wh: {
+            id: number;
+            name: string;
+            address: string;
+            whzones: [
+              null
+            ]
+          };
+          whlockers: [
+            null
+          ]
+        };
+        whcells: [
+          null
+        ]
+      }
+    }
+  ];
+}
 @Component({
   selector: 'app-ready-element',
   templateUrl: './ready-element.component.html',
@@ -54,6 +120,74 @@ export class ReadyElementComponent implements OnInit {
       ]
     }
   };
+  receivedBookGet = {
+    id: 0,
+    serialNumber: '',
+    description: '',
+    status: 0,
+    truckCells: [
+      {
+        id: 0,
+        truckId: 0,
+        itemId: 0,
+        column: 0,
+        row: 0,
+        truck: {
+          id: 0,
+          number: '',
+          width: 0,
+          height: 0,
+          truckCells: [
+            null
+          ]
+        }
+      }
+    ],
+    whcells: [
+      {
+        id: 0,
+        name: '',
+        whlockerId: 0,
+        itemId: 0,
+        status: 0,
+        row: 0,
+        column: 0,
+        whlocker: {
+          id: 0,
+          name: '',
+          whzoneId: 0,
+          height: 0,
+          width: 0,
+          row: 0,
+          column: 0,
+          whzone: {
+            id: 0,
+            name: '',
+            whid: 0,
+            height: 0,
+            width: 0,
+            row: 0,
+            column: 0,
+            wh: {
+              id: 0,
+              name: '',
+              address: '',
+              whzones: [
+                null
+              ]
+            },
+            whlockers: [
+              null
+            ]
+          },
+          whcells: [
+            null
+          ]
+        }
+      }
+    ]
+  };
+  bookFlag = true;
   // tslint:disable-next-line:variable-name
   constructor(private httpService: HttpService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
@@ -66,6 +200,9 @@ export class ReadyElementComponent implements OnInit {
       this.description = 'Description:' + this.myEl.item.description;
     } else {
       this.serialNo = 'empty';
+      if (this.myEl.status === 20) {
+        this.bookFlag = false;
+      }
     }
   }
 
@@ -141,5 +278,12 @@ export class ReadyElementComponent implements OnInit {
     this._snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+  unBook(): void {
+    this.httpService.unBookBtnPost(this.myEl.id).subscribe(
+      res => {
+        this.openSnackBar('UnBooking is success!', 'Ok');
+      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
   }
 }
