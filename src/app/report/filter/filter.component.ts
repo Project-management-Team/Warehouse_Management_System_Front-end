@@ -24,7 +24,7 @@ export class FilterComponent implements OnInit {
     {name: 'Element 2'},
     {name: 'Element 3'},
   ];
-  @Output() messageEvent = new EventEmitter<Array<any>>();
+  @Output() messageEvent = new EventEmitter<ReceivedItems[]>();
   filterForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
   });
@@ -62,7 +62,7 @@ export class FilterComponent implements OnInit {
     console.log(message.value);
     this.httpService.warehouseSearchGet(1, message.value).subscribe(
       (data: ReceivedItems[]) => {
-        console.log(data);
+        console.log('Data before emit', data);
         this.messageEvent.emit(data);
       });
   }

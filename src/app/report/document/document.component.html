@@ -4,9 +4,9 @@
   </mat-card-header>
   <mat-card-content>
     <div class="info">
-      <ul *ngFor="let e1 of myItems">
+      <ul *ngFor="let e1 of myItems.values()">
         <li>serial number: {{e1.serialNumber}} | description: {{e1.description}}
-          <ul *ngFor="let e2 of e1.whcells">
+          <ul *ngFor="let e2 of e1.whcells.values()">
             <li>element name: {{e2.name}} | element status: {{e2.status}}</li>
             <ul>
               <li>shelf name: {{e2.whlocker.name}}</li>

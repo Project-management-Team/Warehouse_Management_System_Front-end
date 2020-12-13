@@ -9,16 +9,19 @@ import {ReceivedItems} from '../data-templates/received-data/ReceivedItems';
 export class ReportComponent implements OnInit {
 
   dataFlag = false;
-  receivedItems: ReceivedItems[];
+  receivedItems: ReceivedItems[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    // this.receivedItems.push({id: 0, serialNumber: '', description: '', status: 0, truckCells: null, whcells: null});
   }
 
   receiveMessage($event: ReceivedItems[]): void {
+    console.log('received method!', $event);
+    // console.log('received items', this.receivedItems);
     if ($event.length !== 0) {
-      this.receivedItems = $event;
+      $event.forEach(item => this.receivedItems.push(item));
       this.dataFlag = true;
     }
   }

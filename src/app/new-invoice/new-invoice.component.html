@@ -5,12 +5,12 @@
       <mat-label>Invoice No</mat-label>
       <input #invoice matInput
              type="text"
-             [(ngModel)]="invoiceValue"
+
              maxlength="256"
              placeholder="Ex.: 123"
              formControlName="stateGroup"
              required
-             (change)="check(invoice.value)"
+             (change)="check(invoice.value, $event)"
       >
       <mat-hint align="start"><strong>Don`t exceed the maximum size</strong> </mat-hint>
       <mat-hint align="end">{{invoice.value.length}} / 256</mat-hint>

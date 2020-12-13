@@ -9,7 +9,7 @@ import {ReceivedItems} from '../data-templates/received-data/ReceivedItems';
   styleUrls: ['./new-invoice.component.css']
 })
 export class NewInvoiceComponent implements OnInit {
-  invoiceValue = '';
+  invoiceValue = 'initial';
   qtyValue = [];
   invoiceForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
@@ -36,10 +36,11 @@ export class NewInvoiceComponent implements OnInit {
     );
   }
 
-  check(msg): void {
+  check(msg, event): void {
     if (msg !== '') {
       this.myFlag = false;
     }
+    this.invoiceValue = event.target.value;
   }
 
   receiveMessage($event): void {
@@ -58,7 +59,7 @@ export class NewInvoiceComponent implements OnInit {
     // this.invoiceValue;
     // this.invoiceValue;
     // console.log('AAAAA');
-    // console.log(this.invoiceValue);
+    console.log('invoice value', this.invoiceValue);
     this.httpService.truckPost(msg, this.myTruckCells).subscribe(
       res => console.log(res), error => console.log(error)
     );
