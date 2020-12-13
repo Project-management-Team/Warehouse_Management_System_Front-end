@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {SingleElement} from '../../data-templates/SingleElement';
 import {HttpService} from '../../http.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
+import {AdminPopComponent} from '../../admin-pop/admin-pop.component';
+import {AddBtnPopComponent} from './add-btn-pop/add-btn-pop.component';
 
 @Component({
   selector: 'app-ready-element',
@@ -51,7 +54,7 @@ export class ReadyElementComponent implements OnInit {
     }
   };
   // tslint:disable-next-line:variable-name
-  constructor(private httpService: HttpService, private _snackBar: MatSnackBar) { }
+  constructor(private httpService: HttpService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.myEl = this.childElement;
@@ -66,10 +69,28 @@ export class ReadyElementComponent implements OnInit {
   }
 
   addBtn(): void {
-    this.httpService.addBtnPost(this.myEl.id, this.myEl.itemId).subscribe(
-      res => {
-        this.openSnackBar('Adding is success!', 'Ok');
-      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+    // this.httpService.addBtnPost(this.myEl.id, this.myEl.itemId).subscribe(
+    //   res => {
+    //     this.openSnackBar('Adding is success!', 'Ok');
+    //   }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+    const dialogRef = this.dialog.open(AddBtnPopComponent, {
+      width: '50vw',
+      height: '50vh',
+      data: {id: this.myEl.id}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.myEl = this.childElement;
+      console.log(this.myEl);
+      if (this.myEl.item !== null) {
+        this.free = false;
+        this.serialNo = 'Serial No:' + this.myEl.item.serialNumber;
+        this.description = 'Description:' + this.myEl.item.description;
+      } else {
+        this.serialNo = 'empty';
+      }
+    });
   }
 
   bookBtn(): void {

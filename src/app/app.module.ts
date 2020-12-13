@@ -41,6 +41,8 @@ import {MatTableModule} from '@angular/material/table';
 import { AddNewElementPopComponent } from './shelf-detection/warehouse/add-new-element-pop/add-new-element-pop.component';
 import { DeleteElementPopComponent } from './shelf-detection/warehouse/delete-element-pop/delete-element-pop.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { AddBtnPopComponent } from './shelf-detection/ready-element/add-btn-pop/add-btn-pop.component';
+import { MoveBtnPopComponent } from './shelf-detection/ready-element/move-btn-pop/move-btn-pop.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     ActivityInfoComponent,
     AddNewElementPopComponent,
     DeleteElementPopComponent,
+    AddBtnPopComponent,
+    MoveBtnPopComponent,
   ],
   imports: [
     BrowserModule,

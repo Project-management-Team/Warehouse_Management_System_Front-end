@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add element:</h1>
+<div mat-dialog-content>
+  <p>Put item data:</p>
+  <form [formGroup]="serialNumForm">
+    <mat-form-field>
+      <input #serialNum type="text"
+             matInput
+             placeholder="serial number"
+             formControlName="stateGroup"
+             required
+      >
+    </mat-form-field>
+  </form>
+  <form [formGroup]="descriptionForm">
+    <mat-form-field>
+      <input #description type="text"
+             matInput
+             placeholder="description"
+             formControlName="stateGroup"
+             required
+      >
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [disabled]="!serialNumForm.valid || !descriptionForm.valid" [mat-dialog-close]="" cdkFocusInitial (click)="addItem(serialNum, description)">Add</button>
+</div>

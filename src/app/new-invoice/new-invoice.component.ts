@@ -18,6 +18,7 @@ export class NewInvoiceComponent implements OnInit {
   myFlag = true;
   message = [];
   clearData = false;
+  myTruckCells = [];
   // tslint:disable-next-line:variable-name
   constructor(private httpService: HttpService, private _formBuilder: FormBuilder) {
   }
@@ -43,12 +44,24 @@ export class NewInvoiceComponent implements OnInit {
 
   receiveMessage($event): void {
     this.message.push($event);
+    this.myTruckCells.push(
+      {
+      itemId: $event, // null if item non selected
+      column: 0,
+      row: 0
+      }
+    );
     this.clearData = false;
   }
 
-  sendData(): void {
+  sendData(msg): void {
     // this.invoiceValue;
     // this.invoiceValue;
+    // console.log('AAAAA');
+    // console.log(this.invoiceValue);
+    this.httpService.truckPost(msg, this.myTruckCells).subscribe(
+      res => console.log(res), error => console.log(error)
+    );
   }
 
   refreshData(): void {

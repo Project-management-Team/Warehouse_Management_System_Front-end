@@ -1,5 +1,5 @@
 <section style="width: 90vw; height: 90vh">
   <h1 style="margin: 10px">Report</h1>
   <app-filter (messageEvent)="receiveMessage($event)"></app-filter>
-  <app-document *ngIf="dataFlag" [receivedItems]="receivedItems"></app-document>
+  <app-document [receivedItems]="receivedItems"></app-document>
 </section>

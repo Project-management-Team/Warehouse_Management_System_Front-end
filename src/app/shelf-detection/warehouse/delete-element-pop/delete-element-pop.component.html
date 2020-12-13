@@ -7,7 +7,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Select Warehouse</mat-label>
         <mat-select [(value)]="selected">
-          <mat-option value="option" *ngFor="let el of myWH">{{el.name}}</mat-option>
+          <mat-option value="option" *ngFor="let el of myWH" (click)="setWHID(el.name)">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -20,7 +20,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Select Zone</mat-label>
         <mat-select [(value)]="selected">
-          <mat-option value="option" *ngFor="let el of myZone">{{el.name}}</mat-option>
+          <mat-option value="option" *ngFor="let el of myZone" (click)="setZoneID(el.name)">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -33,7 +33,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Select Shelf</mat-label>
         <mat-select [(value)]="selected">
-          <mat-option value="option" *ngFor="let el of myShelf">{{el.name}}</mat-option>
+          <mat-option value="option" *ngFor="let el of myShelf" (click)="setShelfID(el.name)">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
@@ -41,12 +41,12 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>
-        <p (click)="getElement()">Remove Element</p>
+        <p (click)="getElement()">Remove Position</p>
       </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Select Element</mat-label>
         <mat-select [(value)]="selected">
-          <mat-option value="option" *ngFor="let el of myElement">{{el.name}}</mat-option>
+          <mat-option value="option" *ngFor="let el of myElement" (click)="setCellId(el.name)">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>

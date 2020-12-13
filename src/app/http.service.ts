@@ -125,7 +125,7 @@ export class HttpService{
     const body = {
       name: CellName,
       whlockerId: shelfID,
-      itemId: 0,
+      itemId: null,
       status: 0,
       row: 0,
       column: 0
@@ -174,5 +174,34 @@ export class HttpService{
   // tslint:disable-next-line:typedef
   scrapBtnPost(itemID) {
     return this.http.post(`http://wmsproject.azurewebsites.net/api/Items/scrap?itemId=${itemID}`, {});
+  }
+
+  // tslint:disable-next-line:typedef
+  itemCreationPost(SerialNumber, Description) {
+    const body = {serialNumber: SerialNumber, description: Description};
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/Items/`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  putItemPost(cellID: number, itemID) {
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHCell/put-item?cellId=${cellID}&itemId=${itemID}`, {});
+  }
+
+  // tslint:disable-next-line:typedef
+  truckPost(invoiceNO, truckCellS) {
+    const body = {
+      number: invoiceNO,
+      width: 0,
+      height: 0,
+      truckCellS
+      // truckCells: [
+      //   {
+      //     itemId: 0, // null if item non selected
+      //     column: 0,
+      //     row: 0
+      //   }
+      // ]
+    };
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/Truck`, body);
   }
 }

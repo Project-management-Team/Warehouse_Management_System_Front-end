@@ -9,9 +9,11 @@ import {ReceivedItems} from '../../data-templates/received-data/ReceivedItems';
 export class DocumentComponent implements OnInit {
 
   @Input() receivedItems: ReceivedItems[];
+  myItems: ReceivedItems[];
   constructor() { }
 
   ngOnInit(): void {
+    this.myItems = this.receivedItems;
   }
 
 }

@@ -75,15 +75,15 @@ export class AddNewElementPopComponent implements OnInit {
   }
 
   setWHID(value): void {
-    this.whID = String(this.myWH[this.myWH.indexOf(value)].id);
+    this.whID = String(this.myWH[this.myWH.findIndex(val => val.name === value)].id);
   }
 
   setZoneID(value): void {
-    this.zoneID = String(this.myZone[this.myZone.indexOf(value)].id);
+    this.zoneID = String(this.myZone[this.myZone.findIndex(val => val.name === value)].id);
   }
 
   setShelfID(value): void {
-    this.shelfID = String(this.myShelf[this.myShelf.indexOf(value)].id);
+    this.shelfID = String(this.myShelf[this.myShelf.findIndex(val => val.name === value)].id);
   }
 
   addWH(): void {
@@ -94,6 +94,8 @@ export class AddNewElementPopComponent implements OnInit {
   }
 
   addZone(): void {
+    console.log(this.whID);
+    console.log('BBBBB');
     this.httpService.addZonePost(this.zoneName, this.whID).subscribe(
       res => {
         this.openSnackBar('Adding is success!', 'Ok');

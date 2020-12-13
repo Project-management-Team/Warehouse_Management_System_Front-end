@@ -30,6 +30,15 @@ export class DeleteElementPopComponent implements OnInit {
     name: ''
   }];
   selected: '';
+  whName = '';
+  zoneName = '';
+  shelfName = '';
+  itemName = '';
+  whAddress = '';
+  whID = '';
+  zoneID = '';
+  shelfID = '';
+  cellID = '';
   constructor(public dialogRef: MatDialogRef<WarehouseComponent>,
               // tslint:disable-next-line:variable-name max-line-length
               @Inject(MAT_DIALOG_DATA) public data: DialogData, private _formBuilder: FormBuilder, private httpService: HttpService, private _snackBar: MatSnackBar) { }
@@ -77,29 +86,45 @@ export class DeleteElementPopComponent implements OnInit {
     );
   }
 
+  setWHID(value): void {
+    this.whID = String(this.myWH[this.myWH.findIndex(val => val.name === value)].id);
+  }
+
+  setZoneID(value): void {
+    this.zoneID = String(this.myZone[this.myZone.findIndex(val => val.name === value)].id);
+  }
+
+  setShelfID(value): void {
+    this.shelfID = String(this.myShelf[this.myShelf.findIndex(val => val.name === value)].id);
+  }
+
+  setCellId(value): void {
+    this.cellID = String(this.myElement[this.myElement.findIndex(val => val.name === value)].id);
+  }
+
   removeWH(item): void {
-    this.httpService.removeWHDelete(this.myWH[this.myWH.indexOf(item)].id).subscribe(
+    this.httpService.removeWHDelete(this.whID).subscribe(
       res => {
         this.openSnackBar('Delete is success!', 'Ok');
       }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
   }
 
   removeZone(item): void {
-    this.httpService.removeZoneDelete(this.myZone[this.myZone.indexOf(item)].id).subscribe(
+    this.httpService.removeZoneDelete(this.zoneID).subscribe(
       res => {
         this.openSnackBar('Delete is success!', 'Ok');
       }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
   }
 
   removeShelf(item): void {
-    this.httpService.removeShelfsDelete(this.myShelf[this.myShelf.indexOf(item)].id).subscribe(
+    this.httpService.removeShelfsDelete(this.shelfID).subscribe(
       res => {
       this.openSnackBar('Delete is success!', 'Ok');
     }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
   }
 
   removeElement(item): void {
-    this.httpService.removeElementsDelete(this.myElement[this.myElement.indexOf(item)].id).subscribe(
+    this.httpService.removeElementsDelete(this.cellID).subscribe(
       res => {
         this.openSnackBar('Delete is success!', 'Ok');
       }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
