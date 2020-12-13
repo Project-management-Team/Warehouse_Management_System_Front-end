@@ -3,15 +3,15 @@
     <mat-step label="Add Warehouse">
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="whName">
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Address</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="whAddress">
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">ADD</button>
+      <button mat-flat-button color="primary" (click)="addWH()">ADD</button>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>
@@ -19,17 +19,17 @@
       </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="zoneName">
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Select Warehouse</mat-label>
         <mat-select>
-          <mat-option value="option" *ngFor="let el of myWH">{{el.name}}</mat-option>
+          <mat-option value="option" *ngFor="let el of myWH" (click)="setWHID(el.name)">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">ADD</button>
+      <button mat-flat-button color="primary" (click)="addZone()">ADD</button>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>
@@ -37,17 +37,17 @@
       </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="shelfName">
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Select Zone</mat-label>
         <mat-select>
-          <mat-option value="option" *ngFor="let el of myZone">{{el.name}}</mat-option>
+          <mat-option value="option" *ngFor="let el of myZone" (click)="setZoneID(el.name)">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">ADD</button>
+      <button mat-flat-button color="primary" (click)="addShelf()">ADD</button>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>
@@ -55,17 +55,17 @@
       </ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="itemName">
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Select Shelf</mat-label>
         <mat-select>
-          <mat-option value="option" *ngFor="let el of myShelf">{{el.name}}</mat-option>
+          <mat-option value="option" *ngFor="let el of myShelf" (click)="setShelfID(el.name)">{{el.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
-      <button mat-flat-button color="primary">ADD</button>
+      <button mat-flat-button color="primary" (click)="addItem()">ADD</button>
     </mat-step>
 
   </mat-horizontal-stepper>

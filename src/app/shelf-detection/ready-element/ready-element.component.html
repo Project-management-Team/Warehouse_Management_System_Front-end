@@ -11,12 +11,12 @@
   </mat-card-content>
   <mat-card-actions>
     <div *ngIf="!free">
-      <button mat-button style="border-radius: 50%;">Move</button>
-      <button mat-button style="border-radius: 50%;">Scrap</button>
+      <button mat-button style="border-radius: 50%;" (click)="moveBtn()">Move</button>
+      <button mat-button style="border-radius: 50%;" (click)="scrapBtn()">Scrap</button>
     </div>
     <div *ngIf="free">
-      <button mat-button style="border-radius: 50%;">Add</button>
-      <button mat-button style="border-radius: 50%;">Book</button>
+      <button mat-button style="border-radius: 50%;" (click)="addBtn()">Add</button>
+      <button mat-button style="border-radius: 50%;" (click)="bookBtn()">Book</button>
     </div>
   </mat-card-actions>
 </mat-card>

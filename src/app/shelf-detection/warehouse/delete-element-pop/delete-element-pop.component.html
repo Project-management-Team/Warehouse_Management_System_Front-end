@@ -1,18 +1,18 @@
 <div mat-dialog-content>
   <mat-horizontal-stepper>
-<!--    <mat-step>-->
-<!--      <ng-template matStepLabel>-->
-<!--        <p (click)="getWH()">Remove Warehouse</p>-->
-<!--      </ng-template>-->
-<!--      <mat-form-field appearance="fill">-->
-<!--        <mat-label>Select Warehouse</mat-label>-->
-<!--        <mat-select [(value)]="selected">-->
-<!--          <mat-option value="option" *ngFor="let el of myWH">{{el.name}}</mat-option>-->
-<!--        </mat-select>-->
-<!--      </mat-form-field>-->
-<!--      <br>-->
-<!--      <button mat-flat-button color="primary" (click)="removeWH(selected)">Remove</button>-->
-<!--    </mat-step>-->
+    <mat-step>
+      <ng-template matStepLabel>
+        <p (click)="getWH()">Remove Warehouse</p>
+      </ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Warehouse</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option value="option" *ngFor="let el of myWH">{{el.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-flat-button color="primary" (click)="removeWH(selected)">Remove</button>
+    </mat-step>
     <mat-step>
       <ng-template matStepLabel>
         <p (click)="getZone()">Remove Zone</p>

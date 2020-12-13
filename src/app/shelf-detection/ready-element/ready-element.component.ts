@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SingleElement} from '../../data-templates/SingleElement';
+import {HttpService} from '../../http.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-ready-element',
@@ -48,7 +50,8 @@ export class ReadyElementComponent implements OnInit {
       ]
     }
   };
-  constructor() { }
+  // tslint:disable-next-line:variable-name
+  constructor(private httpService: HttpService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.myEl = this.childElement;
@@ -62,4 +65,37 @@ export class ReadyElementComponent implements OnInit {
     }
   }
 
+  addBtn(): void {
+    this.httpService.addBtnPost(this.myEl.id, this.myEl.itemId).subscribe(
+      res => {
+        this.openSnackBar('Adding is success!', 'Ok');
+      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+  }
+
+  bookBtn(): void {
+    this.httpService.bookBtnPost(this.myEl.id).subscribe(
+      res => {
+        this.openSnackBar('Booking is success!', 'Ok');
+      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+  }
+
+  moveBtn(): void {
+    this.httpService.moveBtnPost(this.myEl.id, this.myEl.itemId).subscribe(
+      res => {
+        this.openSnackBar('Moving is success!', 'Ok');
+      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+  }
+
+  scrapBtn(): void {
+    this.httpService.scrapBtnPost(this.myEl.itemId).subscribe(
+      res => {
+        this.openSnackBar('Scraping is success!', 'Ok');
+      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+  }
+
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 }

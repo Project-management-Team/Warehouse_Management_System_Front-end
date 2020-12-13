@@ -13,10 +13,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./delete-element-pop.component.css']
 })
 export class DeleteElementPopComponent implements OnInit {
-  // myWH: ReceivedListItem[] = [{
-  //   id: 0,
-  //   name: ''
-  // }];
+  myWH: ReceivedListItem[] = [{
+    id: 0,
+    name: ''
+  }];
   myZone: ReceivedListItem[] = [{
     id: 0,
     name: ''
@@ -35,7 +35,7 @@ export class DeleteElementPopComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: DialogData, private _formBuilder: FormBuilder, private httpService: HttpService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    // this.getWH();
+    this.getWH();
     this.getZone();
     this.getShelf();
     this.getElement();
@@ -45,13 +45,13 @@ export class DeleteElementPopComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // getWH(): void {
-  //   this.httpService.warehousesAllGet().subscribe(
-  //     (data: ReceivedListItem[]) => {
-  //       this.myWH = data;
-  //     }
-  //   );
-  // }
+  getWH(): void {
+    this.httpService.warehousesAllGet().subscribe(
+      (data: ReceivedListItem[]) => {
+        this.myWH = data;
+      }
+    );
+  }
 
   getZone(): void {
     this.httpService.zonesAllGet().subscribe(
@@ -75,6 +75,13 @@ export class DeleteElementPopComponent implements OnInit {
         this.myElement = data;
       }
     );
+  }
+
+  removeWH(item): void {
+    this.httpService.removeWHDelete(this.myWH[this.myWH.indexOf(item)].id).subscribe(
+      res => {
+        this.openSnackBar('Delete is success!', 'Ok');
+      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
   }
 
   removeZone(item): void {

@@ -89,6 +89,56 @@ export class HttpService{
   }
 
   // tslint:disable-next-line:typedef
+  addWareHousePost(Name, Address) {
+    const body = {name: Name, address: Address};
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/Warehouse`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  addZonePost(ZoneName, whID) {
+    const body = {
+      name: ZoneName,
+      whid: whID,
+      height: 0,
+      width: 0,
+      row: 0,
+      column: 0
+    };
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHZone`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  addShelfsPost(ShelfName, zoneID) {
+    const body = {
+      name: ShelfName,
+      whzoneId: zoneID,
+      height: 0,
+      width: 0,
+      row: 0,
+      column: 0
+    };
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHLocker`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  addElementsPost(CellName, shelfID) {
+    const body = {
+      name: CellName,
+      whlockerId: shelfID,
+      itemId: 0,
+      status: 0,
+      row: 0,
+      column: 0
+    };
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHCell`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  removeWHDelete(whID) {
+    return this.http.delete(`http://wmsproject.azurewebsites.net/api/Warehouse?whId=${whID}`);
+  }
+
+  // tslint:disable-next-line:typedef
   removeZoneDelete(zoneID) {
     return this.http.delete(`http://wmsproject.azurewebsites.net/api/WHZone?zoneId=${zoneID}`);
   }
@@ -101,5 +151,28 @@ export class HttpService{
   // tslint:disable-next-line:typedef
   removeElementsDelete(cellID) {
     return this.http.delete(`http://wmsproject.azurewebsites.net/api/WHCell?cellId=${cellID}`);
+  }
+
+  // tslint:disable-next-line:typedef
+  addBtnPost(cellID, itemID) {
+    const body = {};
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHCell/put-item?cellId=${cellID}&itemId=${itemID}`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  bookBtnPost(cellID) {
+    const body = {};
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHCell/book?cellId=${cellID}`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  moveBtnPost(cellID, itemID) {
+    const body = {};
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHCell/put-item?cellId=${cellID}&itemId=${itemID}`, body);
+  }
+
+  // tslint:disable-next-line:typedef
+  scrapBtnPost(itemID) {
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/Items/scrap?itemId=${itemID}`, {});
   }
 }
