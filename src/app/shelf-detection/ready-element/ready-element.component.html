@@ -15,8 +15,9 @@
       <button mat-button style="border-radius: 50%;" (click)="scrapBtn()">Scrap</button>
     </div>
     <div *ngIf="free">
-      <button mat-button style="border-radius: 50%;" (click)="addBtn()">Add</button>
-      <button mat-button style="border-radius: 50%;" (click)="bookBtn()">Book</button>
+      <button *ngIf="bookFlag" mat-button style="border-radius: 50%;" (click)="addBtn()">Add</button>
+      <button *ngIf="bookFlag" mat-button style="border-radius: 50%;" (click)="bookBtn()">Book</button>
+      <button *ngIf="!bookFlag" mat-button style="border-radius: 50%;" (click)="unBook()">UnBook</button>
     </div>
   </mat-card-actions>
 </mat-card>

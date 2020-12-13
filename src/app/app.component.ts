@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpService} from './http.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AdminPopComponent} from './admin-pop/admin-pop.component';
@@ -21,15 +21,15 @@ interface receivedUser {
   styleUrls: ['./app.component.css'],
   providers: [HttpService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   date = new Date();
   currentTime = this.date.getDate() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getFullYear();
   title = 'WMS';
   user: User; // данные вводимого пользователя
   receivedUser: receivedUser; // полученный пользователь
   // change for authorization
-  done = false;
-  homeFlag = true;
+  done = true;
+  homeFlag = false;
   //
   shelfFlag = true;
   invoiceFlag = false;
@@ -51,6 +51,9 @@ export class AppComponent {
   constructor(private httpService: HttpService, public dialog: MatDialog) {
   }
 
+  ngOnInit(): void {
+  }
+
   // tslint:disable-next-line:typedef
   submit(user: User) {
     // this.httpService.postData(user)
@@ -65,13 +68,14 @@ export class AppComponent {
 
   receiveMessage($event): void {
     if ($event === 'check') {
-      this.homeFlag = !this.homeFlag;
+      this.done = false;
+      this.homeFlag = true;
       console.log(sessionStorage.getItem('user'));
     }
   }
 
   exit(): void {
-    this.homeFlag = !this.homeFlag;
+    this.homeFlag = false;
     location.reload();
   }
 

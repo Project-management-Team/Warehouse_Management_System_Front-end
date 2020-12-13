@@ -166,6 +166,12 @@ export class HttpService{
   }
 
   // tslint:disable-next-line:typedef
+  unBookBtnPost(cellID) {
+    const body = {};
+    return this.http.post(`http://wmsproject.azurewebsites.net/api/WHCell/free?cellId=${cellID}`, body);
+  }
+
+  // tslint:disable-next-line:typedef
   moveBtnPost(cellID, itemID) {
     const body = {};
     return this.http.post(`http://wmsproject.azurewebsites.net/api/WHCell/put-item?cellId=${cellID}&itemId=${itemID}`, body);
@@ -211,4 +217,9 @@ export class HttpService{
     return this.http.post(`http://wmsproject.azurewebsites.net/api/Truck`, body);
   }
 
+  // tslint:disable-next-line:typedef
+  bookBtnGet(cellID) {
+    // const body = {};
+    return this.http.get(`http://wmsproject.azurewebsites.net//api/WHCell/item?cellId=${cellID}`);
+  }
 }
