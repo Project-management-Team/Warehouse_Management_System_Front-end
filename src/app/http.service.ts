@@ -172,6 +172,12 @@ export class HttpService{
   }
 
   // tslint:disable-next-line:typedef
+  moveBtnGet(whID) {
+    // const body = {};
+    return this.http.get(`http://wmsproject.azurewebsites.net/api/WHCell/warehouse-all?whId=${whID}`);
+  }
+
+  // tslint:disable-next-line:typedef
   scrapBtnPost(itemID) {
     return this.http.post(`http://wmsproject.azurewebsites.net/api/Items/scrap?itemId=${itemID}`, {});
   }
@@ -204,4 +210,5 @@ export class HttpService{
     };
     return this.http.post(`http://wmsproject.azurewebsites.net/api/Truck`, body);
   }
+
 }

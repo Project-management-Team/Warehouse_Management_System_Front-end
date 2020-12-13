@@ -256,25 +256,25 @@ export class WarehouseComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
-      this.httpService.warehousesGet().subscribe(
-        (data: ReceivedWarehouse[]) => {
-          this.warehouses.pop();
-          data.forEach(e => {
-            console.log(e);
-            this.warehouses.push(e);
-          });
-          this.currentWareHouse = this.warehouses[0].name;
-        }, error => console.log(error)
-      );
-      if (this.warehouses.length !== 0) {
-        this.httpService.warehouseTreeGet(1).subscribe(
-          (data: ReceivedTree) => {
-            this.myTree = data;
-            sessionStorage.setItem('whID', String(this.myTree.id));
-            this.treeIsReady = true;
-          }
-        );
-      }
+    //   this.httpService.warehousesGet().subscribe(
+    //     (data: ReceivedWarehouse[]) => {
+    //       this.warehouses.pop();
+    //       data.forEach(e => {
+    //         console.log(e);
+    //         this.warehouses.push(e);
+    //       });
+    //       this.currentWareHouse = this.warehouses[0].name;
+    //     }, error => console.log(error)
+    //   );
+    //   if (this.warehouses.length !== 0) {
+    //     this.httpService.warehouseTreeGet(1).subscribe(
+    //       (data: ReceivedTree) => {
+    //         this.myTree = data;
+    //         sessionStorage.setItem('whID', String(this.myTree.id));
+    //         this.treeIsReady = true;
+    //       }
+    //     );
+    //   }
     });
   }
 }

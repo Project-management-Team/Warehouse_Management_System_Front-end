@@ -22,7 +22,7 @@ export class ReportComponent implements OnInit {
     // console.log('received items', this.receivedItems);
     if ($event.length !== 0) {
       $event.forEach(item => this.receivedItems.push(item));
-      this.dataFlag = true;
+      // this.dataFlag = true;
     }
   }
 }

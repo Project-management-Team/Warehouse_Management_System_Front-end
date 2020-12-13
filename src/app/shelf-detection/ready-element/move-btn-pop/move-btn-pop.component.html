@@ -1,1 +1,16 @@
-<p>move-btn-pop works!</p>
+<h1 mat-dialog-title>Add element:</h1>
+<div mat-dialog-content>
+  <p>Choose destination:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Available positions</mat-label>
+    <mat-select #elem>
+      <mat-option *ngFor="let el of receivedData" [value]="el.id">
+        {{el.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="" (click)="sendMove(elem.value)" cdkFocusInitial>Send</button>
+</div>

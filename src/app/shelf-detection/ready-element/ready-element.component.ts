@@ -5,6 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {AdminPopComponent} from '../../admin-pop/admin-pop.component';
 import {AddBtnPopComponent} from './add-btn-pop/add-btn-pop.component';
+import {MoveBtnPopComponent} from './move-btn-pop/move-btn-pop.component';
 
 @Component({
   selector: 'app-ready-element',
@@ -101,10 +102,32 @@ export class ReadyElementComponent implements OnInit {
   }
 
   moveBtn(): void {
-    this.httpService.moveBtnPost(this.myEl.id, this.myEl.itemId).subscribe(
-      res => {
-        this.openSnackBar('Moving is success!', 'Ok');
-      }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+    // this.httpService.moveBtnPost(this.myEl.id, this.myEl.itemId).subscribe(
+    //   res => {
+    //     this.openSnackBar('Moving is success!', 'Ok');
+    //   }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+    // this.httpService.addBtnPost(this.myEl.id, this.myEl.itemId).subscribe(
+    //   res => {
+    //     this.openSnackBar('Adding is success!', 'Ok');
+    //   }, error => this.openSnackBar(`Something went wrong!\nStatus: ${error}`, 'Cancel'));
+    const dialogRef = this.dialog.open(MoveBtnPopComponent, {
+      width: '50vw',
+      height: '50vh',
+      data: {id: this.myEl.itemId}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.myEl = this.childElement;
+      console.log(this.myEl);
+      if (this.myEl.item !== null) {
+        this.free = false;
+        this.serialNo = 'Serial No:' + this.myEl.item.serialNumber;
+        this.description = 'Description:' + this.myEl.item.description;
+      } else {
+        this.serialNo = 'empty';
+      }
+    });
   }
 
   scrapBtn(): void {
