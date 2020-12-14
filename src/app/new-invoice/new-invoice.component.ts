@@ -66,6 +66,7 @@ export class NewInvoiceComponent implements OnInit {
   }
 
   refreshData(): void {
-    this.clearData = true;
+    // this.myTruckCells = [];
+    // this.ngOnInit();
   }
 }
