@@ -9,7 +9,6 @@ import {SingleShelf} from '../../data-templates/SingleShelf';
 import {MatDialog} from '@angular/material/dialog';
 import {AddNewElementPopComponent} from './add-new-element-pop/add-new-element-pop.component';
 import {DeleteElementPopComponent} from './delete-element-pop/delete-element-pop.component';
-import {DataService} from '../../data.service';
 
 
 interface ZoneNode {
