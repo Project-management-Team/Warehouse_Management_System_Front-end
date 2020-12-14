@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../http.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ReceivedItems} from '../data-templates/received-data/ReceivedItems';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-invoice',
@@ -20,7 +21,7 @@ export class NewInvoiceComponent implements OnInit {
   clearData = false;
   myTruckCells = [];
   // tslint:disable-next-line:variable-name
-  constructor(private httpService: HttpService, private _formBuilder: FormBuilder) {
+  constructor(private httpService: HttpService, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -61,12 +62,18 @@ export class NewInvoiceComponent implements OnInit {
     // console.log('AAAAA');
     console.log('invoice value', this.invoiceValue);
     this.httpService.truckPost(msg, this.myTruckCells).subscribe(
-      res => console.log(res), error => console.log(error)
+      res => this.openSnackBar('Sending is success!', 'Ok'), error => this.openSnackBar('Some troubles!', 'Cancel')
     );
   }
 
   refreshData(): void {
     // this.myTruckCells = [];
     // this.ngOnInit();
+  }
+
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }
